@@ -2742,6 +2742,7 @@ textarea:focus-visible {
     var(--shell);
   box-shadow: 0 45px 120px rgba(0, 0, 0, 0.62);
   animation: chat-shell-in 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  overscroll-behavior: contain;
   scrollbar-width: thin;
 }
 
@@ -2788,199 +2789,224 @@ textarea:focus-visible {
   cursor: pointer;
 }
 
-.client-proof-summary {
-  margin-top: 21px;
-  padding: 13px;
-  border: 1px solid rgba(94, 143, 255, 0.18);
-  border-radius: 20px;
+.build-process-list {
+  margin: 21px 0 0;
+  padding: 0;
+  list-style: none;
   display: grid;
-  grid-template-columns: minmax(210px, 0.72fr) minmax(0, 1.28fr);
-  gap: 12px;
-  background: linear-gradient(135deg, color-mix(in srgb, var(--blue) 9%, transparent), rgba(255, 255, 255, 0.018));
-}
-
-.client-proof-mark {
-  min-height: 135px;
-  padding: 16px;
-  border: 1px solid color-mix(in srgb, var(--yellow) 13%, transparent);
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: rgba(6, 11, 19, 0.35);
-}
-
-.client-proof-mark > span {
-  align-self: flex-start;
-  padding: 4px 6px;
-  border-radius: 6px;
-  color: #e8c57f;
-  background: color-mix(in srgb, var(--yellow) 10%, transparent);
-  font-size: 6px;
-  font-weight: 850;
-  text-transform: uppercase;
-  letter-spacing: 0.75px;
-}
-
-.client-proof-mark > div {
-  margin-top: 12px;
-  display: flex;
-  gap: 3px;
-  color: #6edab2;
-}
-
-.client-proof-mark strong {
-  margin-top: 8px;
-  font-size: 14px;
-}
-
-.client-proof-mark small {
-  max-width: 230px;
-  margin-top: 5px;
-  color: #77869b;
-  font-size: 7px;
-  line-height: 1.45;
-}
-
-.build-assurances {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.build-assurances > div {
-  min-height: 63px;
-  padding: 10px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 9px;
-  background: rgba(255, 255, 255, 0.018);
 }
 
-.build-assurances > div > svg {
-  flex: 0 0 auto;
-  color: var(--green);
-}
-
-.build-assurances span {
+.build-process-card {
+  position: relative;
   min-width: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.build-assurances strong {
-  font-size: 9px;
-}
-
-.build-assurances small {
-  margin-top: 4px;
-  color: #78879b;
-  font-size: 7px;
-  line-height: 1.35;
-}
-
-.client-review-list {
-  margin-top: 11px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 9px;
-}
-
-.client-review-card {
-  min-height: 175px;
-  padding: 14px;
+  min-height: 205px;
+  padding: 15px;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 17px;
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.022);
+  background:
+    linear-gradient(155deg, color-mix(in srgb, var(--blue) 7%, transparent), transparent 55%),
+    rgba(255, 255, 255, 0.022);
 }
 
-.client-review-meta {
+.build-process-card::before {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  left: 15px;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, color-mix(in srgb, var(--blue) 72%, white), color-mix(in srgb, var(--green) 55%, transparent), transparent);
+  opacity: 0.72;
+}
+
+.build-process-stage {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 9px;
-}
-
-.client-review-meta > span {
-  color: #7699e4;
-  font-size: 6.5px;
-  font-weight: 850;
-  text-transform: uppercase;
-  letter-spacing: 0.75px;
-}
-
-.client-review-meta > div {
-  display: flex;
-  gap: 2px;
-  color: #73d8b4;
-}
-
-.client-review-card > h3 {
-  margin: 16px 0 0;
-  font-size: 13px;
-  line-height: 1.2;
-  letter-spacing: -0.2px;
-}
-
-.client-review-card > p {
-  margin: 8px 0 18px;
-  color: #b7c3d4;
-  font-size: 9px;
-  line-height: 1.6;
-}
-
-.client-review-card > footer {
-  margin-top: auto;
-  padding-top: 12px;
-  border-top: 1px solid var(--line);
-  display: flex;
-  align-items: flex-end;
   justify-content: space-between;
   gap: 8px;
 }
 
-.client-review-card footer > span {
-  min-width: 0;
+.build-process-stage > span {
+  width: 32px;
+  height: 32px;
+  border: 1px solid color-mix(in srgb, var(--blue) 28%, transparent);
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  color: #91b2ff;
+  background: color-mix(in srgb, var(--blue) 9%, transparent);
+  font-size: 8px;
+  font-weight: 850;
+  letter-spacing: 0.5px;
+}
+
+.build-process-stage > small {
+  color: #687a92;
+  font-size: 6px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.build-process-card > h3 {
+  margin: 15px 0 0;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: -0.25px;
+}
+
+.build-process-card > p {
+  margin: 8px 0 17px;
+  color: #aab8cb;
+  font-size: 8.5px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.build-process-card > footer {
+  margin-top: auto;
+  padding-top: 11px;
+  border-top: 1px solid var(--line);
   display: flex;
   flex-direction: column;
 }
 
-.client-review-card footer strong {
-  font-size: 8px;
+.build-process-card > footer span {
+  color: #68788e;
+  font-size: 5.8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
 }
 
-.client-review-card footer small {
-  margin-top: 3px;
-  color: #66758a;
-  font-size: 6px;
+.build-process-card > footer strong {
+  margin-top: 4px;
+  color: #7dd7b7;
+  font-size: 7.5px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
-.client-review-card footer em {
-  max-width: 105px;
-  padding: 4px 6px;
-  border-radius: 6px;
-  color: #7fd6b8;
-  background: color-mix(in srgb, var(--green) 7%, transparent);
+.build-niche-note {
+  min-height: 70px;
+  margin-top: 10px;
+  padding: 11px 13px;
+  border: 1px solid color-mix(in srgb, var(--green) 20%, transparent);
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: 34px minmax(180px, 0.62fr) minmax(0, 1.38fr);
+  align-items: center;
+  gap: 11px;
+  background: linear-gradient(100deg, color-mix(in srgb, var(--green) 7%, transparent), rgba(255, 255, 255, 0.018));
+}
+
+.build-niche-note > span {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  color: #70d8b2;
+  background: color-mix(in srgb, var(--green) 10%, transparent);
+}
+
+.build-niche-note > div {
+  min-width: 0;
+}
+
+.build-niche-note small {
+  display: block;
+  color: #6fcfad;
   font-size: 6px;
-  font-style: normal;
-  text-align: right;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.build-niche-note h3 {
+  margin: 5px 0 0;
+  font-size: 11px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.build-niche-note > p {
+  margin: 0;
+  padding-left: 12px;
+  border-left: 1px solid color-mix(in srgb, var(--green) 15%, transparent);
+  color: #93a3b7;
+  font-size: 7.5px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.build-assurance-row {
+  min-height: 49px;
+  margin-top: 10px;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.016);
+}
+
+.build-assurance-row > strong {
+  flex: 0 0 auto;
+  color: #788aa3;
+  font-size: 6px;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.build-assurance-row > ul {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.build-assurance-row > ul > li {
+  min-height: 27px;
+  padding: 5px 7px;
+  border: 1px solid color-mix(in srgb, var(--green) 12%, transparent);
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #9cabbf;
+  background: color-mix(in srgb, var(--green) 4%, transparent);
+  font-size: 6.5px;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.build-assurance-row svg {
+  flex: 0 0 auto;
+  color: #70d8b2;
 }
 
 .client-reviews-footer {
   min-height: 57px;
-  margin-top: 11px;
+  margin-top: 10px;
   padding: 10px 12px;
-  border: 1px solid color-mix(in srgb, var(--yellow) 12%, transparent);
+  border: 1px solid var(--line);
   border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  background: color-mix(in srgb, var(--yellow) 2.5%, transparent);
+  background: rgba(255, 255, 255, 0.018);
 }
 
 .client-reviews-footer > p {
@@ -2995,11 +3021,11 @@ textarea:focus-visible {
 
 .client-reviews-footer > p svg {
   flex: 0 0 auto;
-  color: #d9ad5c;
+  color: #70d8b2;
 }
 
 .client-reviews-footer > p strong {
-  color: #bda677;
+  color: #b9c7da;
 }
 
 .client-reviews-footer > div {
@@ -3998,7 +4024,7 @@ textarea:focus-visible {
 
   .client-reviews-sheet {
     width: 100%;
-    max-height: calc(100dvh - 12px);
+    max-height: calc(var(--app-viewport-height, 100dvh) - 12px);
     padding: 22px 20px max(20px, env(safe-area-inset-bottom));
     border-right: 0;
     border-bottom: 0;
@@ -4007,8 +4033,12 @@ textarea:focus-visible {
     animation: review-sheet-in 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) both;
   }
 
-  .client-proof-summary {
-    grid-template-columns: minmax(185px, 0.68fr) minmax(0, 1.32fr);
+  .build-process-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .build-process-card {
+    min-height: 178px;
   }
 
   .pricing-modal {
@@ -4339,20 +4369,38 @@ textarea:focus-visible {
     font-size: 8px;
   }
 
-  .client-proof-summary {
+  .client-reviews-header > button {
+    width: 44px;
+    height: 44px;
+  }
+
+  .build-process-list {
     grid-template-columns: 1fr;
+    gap: 8px;
   }
 
-  .client-proof-mark {
-    min-height: 112px;
-  }
-
-  .client-review-list {
-    grid-template-columns: 1fr;
-  }
-
-  .client-review-card {
+  .build-process-card {
     min-height: 164px;
+  }
+
+  .build-niche-note {
+    grid-template-columns: 34px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .build-niche-note > p {
+    grid-column: 2;
+    padding: 0;
+    border-left: 0;
+  }
+
+  .build-assurance-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .build-assurance-row > ul {
+    width: 100%;
   }
 
   .client-reviews-footer {
@@ -4363,6 +4411,10 @@ textarea:focus-visible {
   .client-reviews-footer > div,
   .client-reviews-footer button {
     width: 100%;
+  }
+
+  .client-reviews-footer button {
+    min-height: 44px;
   }
 
   .action-context {

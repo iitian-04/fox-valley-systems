@@ -142,6 +142,29 @@ const emptyAttribution: Attribution = {
   fbclid: "",
 };
 
+const buildProcessStages = [
+  {
+    title: "Scope the first win",
+    detail: "Map the trigger, approved responses, system access, exceptions, and human owner.",
+    deliverable: "Clear scope + confirmed price",
+  },
+  {
+    title: "Build around your tools",
+    detail: "Configure one useful workflow without forcing a software replacement.",
+    deliverable: "Working workflow ready for review",
+  },
+  {
+    title: "Test real situations",
+    detail: "Check normal paths, edge cases, alerts, opt-outs, and human escalation.",
+    deliverable: "Completed launch checklist",
+  },
+  {
+    title: "Launch and hand off",
+    detail: "Activate the workflow and give your team its logic, ownership points, and operating guide.",
+    deliverable: "A workflow your team can run",
+  },
+] as const;
+
 const selectedLabel = (count: number) =>
   count === 0 ? "No workflows selected" : `${count} workflow${count === 1 ? "" : "s"} selected`;
 
@@ -283,7 +306,7 @@ function ProfilePanel({
         </div>
       </div>
 
-      <button className="feedback-card" type="button" onClick={onOpenStandards}>
+      <button className="feedback-card" type="button" onClick={onOpenStandards} aria-haspopup="dialog" aria-controls="build-standards-dialog">
         <div className="feedback-signal"><ShieldCheck size={19} /></div>
         <div>
           <strong>Built for a safe first step</strong>
@@ -612,13 +635,13 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
       <header className="site-header">
         <button className="site-header-brand" type="button" onClick={() => setStep(1)} aria-label="Elevate home">
           <Wordmark compact />
-          <span><strong>{siteConfig.industry}</strong><small>AI workflow planner</small></span>
+          <span><strong>{siteConfig.industry}</strong><small>Done-for-you AI automation</small></span>
         </button>
 
         <nav className="site-header-nav" aria-label="Primary navigation">
           <button type="button" onClick={() => setStep(1)}>Workflows</button>
           <button type="button" onClick={() => setPricingOpen(true)}>Pricing</button>
-          <button type="button" onClick={() => setStandardsOpen(true)}>How we build</button>
+          <button type="button" onClick={() => setStandardsOpen(true)} aria-haspopup="dialog" aria-controls="build-standards-dialog">How we build</button>
         </nav>
 
         <button className="workflow-library-trigger" type="button" onClick={() => setPricingOpen(true)}>
@@ -901,45 +924,57 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
       </section>
 
       {standardsOpen && (
-        <div className="client-reviews-overlay" role="dialog" aria-modal="true" aria-labelledby="build-standards-title" onMouseDown={(event) => { if (event.target === event.currentTarget) setStandardsOpen(false); }}>
-          <section className="client-reviews-sheet">
+        <div className="client-reviews-overlay" onPointerDown={(event) => { if (event.target === event.currentTarget) setStandardsOpen(false); }}>
+          <section id="build-standards-dialog" className="client-reviews-sheet" role="dialog" aria-modal="true" aria-labelledby="build-standards-title" aria-describedby="build-standards-description">
             <header className="client-reviews-header">
               <div>
-                <span>How Elevate builds</span>
-                <h2 id="build-standards-title">A useful first automation without a giant transformation project.</h2>
-                <p>Clear scope, one-time project pricing, real testing, and a handoff your team can operate.</p>
+                <span>How Elevate delivers</span>
+                <h2 id="build-standards-title">One useful workflow—clearly scoped, tested, and handed off.</h2>
+                <p id="build-standards-description">Start with the bottleneck you can see. Keep your team in control. Expand only when the first workflow earns it.</p>
               </div>
-              <button type="button" onClick={() => setStandardsOpen(false)} aria-label="Close build standards"><X size={18} /></button>
+              <button type="button" autoFocus onClick={() => setStandardsOpen(false)} aria-label="Close build standards"><X size={18} /></button>
             </header>
 
-            <div className="client-proof-summary">
-              <div className="client-proof-mark">
-                <span>One-time project</span>
-                <div><ShieldCheck size={22} /></div>
-                <strong>Start narrow. Build confidence.</strong>
-                <small>Discovery, implementation, testing, and launch handoff are included in the starting project price.</small>
-              </div>
-              <div className="build-assurances">
-                {siteConfig.trustItems.map((item) => (
-                  <div key={item}><ShieldCheck size={16} /><span><strong>{item}</strong><small>Confirmed during scope review</small></span></div>
-                ))}
-              </div>
-            </div>
-
-            <div className="client-review-list">
-              {siteConfig.buildNotes.map((note) => (
-                <article className="client-review-card" key={note.title}>
-                  <div className="client-review-meta"><span>Build standard</span><div><ListChecks size={16} /></div></div>
-                  <h3>{note.title}</h3>
-                  <p>{note.detail}</p>
-                  <footer><span><strong>Elevate</strong><small>Delivery commitment</small></span><em>Scope before build</em></footer>
-                </article>
+            <ol className="build-process-list" aria-label="Elevate delivery stages">
+              {buildProcessStages.map((stage, index) => (
+                <li className="build-process-card" key={stage.title}>
+                  <div className="build-process-stage" aria-hidden="true">
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <small>Stage {index + 1}</small>
+                  </div>
+                  <h3>{stage.title}</h3>
+                  <p>{stage.detail}</p>
+                  <footer>
+                    <span>Deliverable</span>
+                    <strong>{stage.deliverable}</strong>
+                  </footer>
+                </li>
               ))}
-            </div>
+            </ol>
+
+            {siteConfig.buildNotes[0] && (
+              <aside className="build-niche-note" aria-labelledby="build-niche-note-title">
+                <span aria-hidden="true"><ListChecks size={17} /></span>
+                <div>
+                  <small>Configured for {siteConfig.industry}</small>
+                  <h3 id="build-niche-note-title">{siteConfig.buildNotes[0].title}</h3>
+                </div>
+                <p>{siteConfig.buildNotes[0].detail}</p>
+              </aside>
+            )}
+
+            <section className="build-assurance-row" aria-labelledby="build-assurances-title">
+              <strong id="build-assurances-title">Built into every first project</strong>
+              <ul>
+                {siteConfig.trustItems.map((item) => (
+                  <li key={item}><Check size={12} aria-hidden="true" />{item}</li>
+                ))}
+              </ul>
+            </section>
 
             <footer className="client-reviews-footer">
-              <p><ShieldCheck size={15} /><span><strong>Know what you are buying.</strong> Final scope, system access, human handoffs, third-party usage, and launch requirements are reviewed before implementation.</span></p>
-              <div><button type="button" onClick={() => setStandardsOpen(false)}>Explore workflows</button><button type="button" onClick={() => { setStandardsOpen(false); setChatOpen(true); }}>24/7 Chat <ChevronRight size={14} /></button></div>
+              <p><ShieldCheck size={15} aria-hidden="true" /><span><strong>Know what happens next.</strong> Scope, price, access, testing, and ownership are confirmed before launch.</span></p>
+              <div><button type="button" onClick={() => setStandardsOpen(false)}>Explore first workflows</button><button type="button" onClick={() => { setStandardsOpen(false); setChatOpen(true); }}>Ask a question <ChevronRight size={14} /></button></div>
             </footer>
           </section>
         </div>
@@ -987,7 +1022,7 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
           <div className="chat-shell">
             <aside className="chat-visual">
               <button type="button" className="chat-close-mobile" onClick={() => setChatOpen(false)} aria-label="Close chat"><X size={18} /></button>
-              <div className="chat-brand"><Wordmark compact /><span>Elevate</span></div>
+              <div className="chat-brand"><Wordmark compact /><span>24/7 Chat</span></div>
               <div className="voice-orb"><Image src="/ai-voice-orb-cutout.png" alt="Abstract AI assistant visualization" fill sizes="360px" loading="eager" /></div>
               <span className="advisor-status"><i /> AI workflow advisor</span>
               <h2>Find the first workflow worth building.</h2>
