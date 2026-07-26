@@ -49,6 +49,7 @@ import {
   type WorkflowIcon,
   type WorkflowItem,
 } from "@/data/icp-types";
+import { getNicheHeroImage } from "@/data/icp-images";
 import {
   createLocalPromotion,
   formatUsd,
@@ -256,6 +257,8 @@ function ProfilePanel({
   onOpenStandards: () => void;
   siteConfig: IcpBundle["siteConfig"];
 }) {
+  const nicheHeroImage = getNicheHeroImage(siteConfig.slug);
+
   return (
     <aside className="profile-panel">
       <div className="profile-copy">
@@ -264,14 +267,14 @@ function ProfilePanel({
         <p>{siteConfig.subheadline}</p>
       </div>
 
-      <div className="orchestrator-card" aria-label="Connected workflow illustration">
+      <div className="orchestrator-card">
         <div className="orchestrator-image">
           <Image
-            src="/automation-orchestrator-cutout.png"
-            alt="Connected automation workflow components"
+            src={nicheHeroImage.src}
+            alt={nicheHeroImage.alt}
             fill
             sizes="330px"
-            priority
+            loading="eager"
           />
         </div>
         <div className="orchestrator-overlay">
@@ -633,7 +636,7 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
 
         <button className="site-header-cta" type="button" onClick={() => setChatOpen(true)}>
           <MessageCircle size={16} />
-          <span>Ask AI advisor</span>
+          <span>24/7 Chat</span>
         </button>
       </header>
 
@@ -936,7 +939,7 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
 
             <footer className="client-reviews-footer">
               <p><ShieldCheck size={15} /><span><strong>Know what you are buying.</strong> Final scope, system access, human handoffs, third-party usage, and launch requirements are reviewed before implementation.</span></p>
-              <div><button type="button" onClick={() => setStandardsOpen(false)}>Explore workflows</button><button type="button" onClick={() => { setStandardsOpen(false); setChatOpen(true); }}>Ask AI advisor <ChevronRight size={14} /></button></div>
+              <div><button type="button" onClick={() => setStandardsOpen(false)}>Explore workflows</button><button type="button" onClick={() => { setStandardsOpen(false); setChatOpen(true); }}>24/7 Chat <ChevronRight size={14} /></button></div>
             </footer>
           </section>
         </div>

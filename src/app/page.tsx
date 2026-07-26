@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IcpLanding } from "@/components/icp-landing";
+import { getNicheHeroImage } from "@/data/icp-images";
 import { defaultIcpSlug, getIcpBundle } from "@/data/icp-registry";
 import { getPublicSiteUrl } from "@/lib/site-url";
 
@@ -14,6 +15,7 @@ function getHomeServicesBundle() {
 }
 
 const homeServicesBundle = getHomeServicesBundle();
+const homeServicesHero = getNicheHeroImage(homeServicesBundle.siteConfig.slug);
 const publicSiteUrl = getPublicSiteUrl();
 
 export const metadata: Metadata = {
@@ -41,10 +43,8 @@ export const metadata: Metadata = {
       ? {
           images: [
             {
-              url: new URL("/og.png", publicSiteUrl),
-              width: 1200,
-              height: 630,
-              alt: "Elevate AI workflows for home service companies",
+              url: new URL(homeServicesHero.src, publicSiteUrl),
+              alt: homeServicesHero.alt,
             },
           ],
         }
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     title: homeServicesBundle.siteConfig.metaTitle,
     description: homeServicesBundle.siteConfig.metaDescription,
     ...(publicSiteUrl
-      ? { images: [new URL("/og.png", publicSiteUrl)] }
+      ? { images: [new URL(homeServicesHero.src, publicSiteUrl)] }
       : {}),
   },
 };

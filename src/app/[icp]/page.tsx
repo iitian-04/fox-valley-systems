@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { IcpLanding } from "@/components/icp-landing";
+import { getNicheHeroImage } from "@/data/icp-images";
 import {
   canonicalIcpSlugs,
   getIcpBundle,
@@ -28,6 +29,7 @@ export async function generateMetadata({
   if (!bundle) return {};
 
   const { siteConfig } = bundle;
+  const nicheHeroImage = getNicheHeroImage(siteConfig.slug);
   const route = `/${siteConfig.slug}`;
   const publicSiteUrl = getPublicSiteUrl();
 
@@ -50,11 +52,24 @@ export async function generateMetadata({
       description: siteConfig.metaDescription,
       siteName: "Elevate",
       ...(publicSiteUrl ? { url: new URL(route, publicSiteUrl) } : {}),
+      ...(publicSiteUrl
+        ? {
+            images: [
+              {
+                url: new URL(nicheHeroImage.src, publicSiteUrl),
+                alt: nicheHeroImage.alt,
+              },
+            ],
+          }
+        : {}),
     },
     twitter: {
       card: "summary_large_image",
       title: siteConfig.metaTitle,
       description: siteConfig.metaDescription,
+      ...(publicSiteUrl
+        ? { images: [new URL(nicheHeroImage.src, publicSiteUrl)] }
+        : {}),
     },
   };
 }
