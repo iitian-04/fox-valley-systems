@@ -192,7 +192,10 @@ function MobileSplash({
       <p>Start with one workflow. Expand only when the value is clear.</p>
       <div className="splash-tech-card">
         <span><Zap size={18} /></span>
-        <div><small>Suggested first win</small><strong>{siteConfig.splashFeature}</strong></div>
+        <div>
+          <small>Suggested first win</small>
+          <strong>{siteConfig.splashFeature}</strong>
+        </div>
         <Check size={16} />
       </div>
       <div className="splash-trust">
