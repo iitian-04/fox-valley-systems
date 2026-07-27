@@ -7,6 +7,7 @@ import { homeServicesBundle } from "./icps/home-services";
 import * as hvacCompanies from "./icps/hvac-companies";
 import * as independentImagingCenters from "./icps/independent-imaging-centers";
 import * as landscapingLawnCareCompanies from "./icps/landscaping-lawn-care-companies";
+import * as lawFirms from "./icps/law-firms";
 import * as medSpas from "./icps/med-spas";
 import * as orthopedicPractices from "./icps/orthopedic-practices";
 import * as pestControlCompanies from "./icps/pest-control-companies";
@@ -32,6 +33,7 @@ export const canonicalIcpSlugs = [
   "veterinary-clinics",
   "physical-therapy-clinics",
   "dermatology-practices",
+  "law-firms",
   "hvac-companies",
   "plumbing-companies",
   "roofing-companies",
@@ -107,6 +109,10 @@ const canonicalBundles: Record<IcpSlug, IcpBundle> = {
   "dermatology-practices": defineIcpBundle(
     source(dermatologyPractices),
     theme("#9D174D", "#A78BFA", "#3F1027", "#FFF7FA", "157, 23, 77"),
+  ),
+  "law-firms": defineIcpBundle(
+    source(lawFirms),
+    theme("#315C88", "#C49A5A", "#172331", "#F7F4EE", "49, 92, 136"),
   ),
   "hvac-companies": defineIcpBundle(
     source(hvacCompanies),

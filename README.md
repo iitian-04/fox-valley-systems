@@ -1,6 +1,6 @@
 # Elevate Main
 
-One mobile-first Elevate landing application serving a generic home-services homepage plus 16 industry-specific canonical routes. Every route uses the same tested workflow planner, lead forms, promotional pricing logic, and AI advisor while loading its own copy, workflows, prices, safeguards, prompt context, metadata, and color scheme.
+One mobile-first Elevate landing application serving a generic home-services homepage plus 17 industry-specific canonical routes. Every route uses the same tested workflow planner, lead forms, promotional pricing logic, and AI advisor while loading its own copy, workflows, prices, safeguards, prompt context, metadata, and color scheme.
 
 ## Routes
 
@@ -18,6 +18,7 @@ Canonical ICP routes:
 /veterinary-clinics
 /physical-therapy-clinics
 /dermatology-practices
+/law-firms
 /hvac-companies
 /plumbing-companies
 /roofing-companies

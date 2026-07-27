@@ -19,6 +19,7 @@ import {
   ListChecks,
   MessageCircle,
   MessagesSquare,
+  MonitorPlay,
   PhoneMissed,
   Plus,
   RefreshCw,
@@ -50,6 +51,7 @@ import {
   type WorkflowItem,
 } from "@/data/icp-types";
 import { getNicheHeroImage } from "@/data/icp-images";
+import { getWorkExample } from "@/data/work-examples";
 import {
   createLocalPromotion,
   formatUsd,
@@ -396,6 +398,7 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
   const [chatOpen, setChatOpen] = useState(false);
   const [pricingOpen, setPricingOpen] = useState(false);
   const [standardsOpen, setStandardsOpen] = useState(false);
+  const [workExampleOpen, setWorkExampleOpen] = useState(false);
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
     { id: "welcome", role: "assistant", content: siteConfig.chatWelcome },
   ]);
@@ -522,20 +525,22 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
   }, [chatMessages, chatSending]);
 
   useEffect(() => {
-    const modalOpen = chatOpen || pricingOpen || standardsOpen;
+    const modalOpen =
+      chatOpen || pricingOpen || standardsOpen || workExampleOpen;
     document.body.classList.toggle("modal-open", modalOpen);
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key !== "Escape") return;
       setChatOpen(false);
       setPricingOpen(false);
       setStandardsOpen(false);
+      setWorkExampleOpen(false);
     };
     if (modalOpen) window.addEventListener("keydown", closeOnEscape);
     return () => {
       document.body.classList.remove("modal-open");
       window.removeEventListener("keydown", closeOnEscape);
     };
-  }, [chatOpen, pricingOpen, standardsOpen]);
+  }, [chatOpen, pricingOpen, standardsOpen, workExampleOpen]);
 
   const toggleWorkflow = (id: string) => {
     setSelectedIds((current) =>
@@ -628,6 +633,7 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
   }
   const promoActive = promotion !== null;
   const quickStartLivePrice = getLivePriceUsd(quickStartTier.setup, promoActive);
+  const workExample = getWorkExample(siteConfig.slug);
 
   return (
     <main className="screen" style={themeStyle}>
@@ -647,18 +653,35 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
           <button type="button" onClick={() => setStandardsOpen(true)} aria-haspopup="dialog" aria-controls="build-standards-dialog">How we build</button>
         </nav>
 
-        <button className="workflow-library-trigger" type="button" onClick={() => setPricingOpen(true)}>
-          <span className="workflow-library-industries" aria-hidden="true"><i>01</i><i>02</i><i>03</i></span>
-          <span className="workflow-library-trigger-copy">
-            <strong>Start with a practical first win</strong>
-            <small>
-              {promoActive
-                ? `50% promo from ${formatUsd(quickStartLivePrice)} · normally ${formatUsd(quickStartTier.setup)}`
-                : `One-time from ${formatUsd(quickStartTier.setup)} · no forced software replacement`}
-            </small>
-          </span>
-          <ChevronRight size={16} />
-        </button>
+        {workExample ? (
+          <button
+            className="workflow-library-trigger work-example-trigger"
+            type="button"
+            onClick={() => setWorkExampleOpen(true)}
+            aria-haspopup="dialog"
+            aria-controls="work-example-dialog"
+          >
+            <span className="work-example-mark" aria-hidden="true"><MonitorPlay size={18} /></span>
+            <span className="workflow-library-trigger-copy">
+              <strong>See what a better customer journey feels like</strong>
+              <small>{workExample.name} · interactive live project</small>
+            </span>
+            <ChevronRight size={16} />
+          </button>
+        ) : (
+          <button className="workflow-library-trigger" type="button" onClick={() => setPricingOpen(true)}>
+            <span className="workflow-library-industries" aria-hidden="true"><i>01</i><i>02</i><i>03</i></span>
+            <span className="workflow-library-trigger-copy">
+              <strong>Start with a practical first win</strong>
+              <small>
+                {promoActive
+                  ? `50% promo from ${formatUsd(quickStartLivePrice)} · normally ${formatUsd(quickStartTier.setup)}`
+                  : `One-time from ${formatUsd(quickStartTier.setup)} · no forced software replacement`}
+              </small>
+            </span>
+            <ChevronRight size={16} />
+          </button>
+        )}
 
         <button className="site-header-cta" type="button" onClick={() => setChatOpen(true)}>
           <MessageCircle size={16} />
@@ -925,6 +948,65 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
           )}
         </div>
       </section>
+
+      {workExampleOpen && workExample && (
+        <div
+          className="work-example-overlay"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) {
+              setWorkExampleOpen(false);
+            }
+          }}
+        >
+          <section
+            id="work-example-dialog"
+            className="work-example-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="work-example-title"
+            aria-describedby="work-example-description"
+          >
+            <header className="work-example-header">
+              <div>
+                <span><i /> Interactive work · {workExample.name}</span>
+                <h2 id="work-example-title">See what a better customer journey feels like.</h2>
+                <p id="work-example-description">{workExample.summary}</p>
+              </div>
+              <div className="work-example-actions">
+                <button
+                  type="button"
+                  autoFocus
+                  onClick={() => setWorkExampleOpen(false)}
+                  aria-label="Close live work example"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+            </header>
+
+            <div className="work-example-browser">
+              <div className="work-example-browser-bar">
+                <span aria-hidden="true"><i /><i /><i /></span>
+                <strong>
+                  {workExample.name}
+                  <small>Scrollable · fully interactive</small>
+                </strong>
+                <em aria-hidden="true">Live demo</em>
+              </div>
+              <div className="work-example-frame">
+                <iframe
+                  src={workExample.url}
+                  title={`${workExample.name} live customer journey`}
+                  loading="lazy"
+                  scrolling="yes"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  sandbox="allow-forms allow-modals allow-same-origin allow-scripts"
+                />
+              </div>
+            </div>
+          </section>
+        </div>
+      )}
 
       {standardsOpen && (
         <div className="client-reviews-overlay" onPointerDown={(event) => { if (event.target === event.currentTarget) setStandardsOpen(false); }}>

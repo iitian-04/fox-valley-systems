@@ -46,6 +46,10 @@ const nicheHeroImages = {
     src: "/niche-heroes/dermatology-practices.jpg",
     alt: "Dermatologist examining a patient’s skin with a dermatoscope",
   },
+  "law-firms": {
+    src: "/niche-heroes/law-firms.jpg",
+    alt: "Attorney listening to a client during a consultation",
+  },
   "hvac-companies": {
     src: "/niche-heroes/hvac-companies.jpg",
     alt: "HVAC technician servicing a residential condenser",
