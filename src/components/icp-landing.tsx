@@ -1000,7 +1000,7 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
                   loading="lazy"
                   scrolling="yes"
                   referrerPolicy="strict-origin-when-cross-origin"
-                  sandbox="allow-forms allow-modals allow-same-origin allow-scripts"
+                  sandbox="allow-forms allow-modals allow-same-origin allow-scripts allow-top-navigation-to-custom-protocols"
                 />
               </div>
             </div>
