@@ -46,6 +46,13 @@ export type LeadWebhookPayload = {
   email?: string;
   phone?: string;
   organization?: string;
+  legalConsent?: {
+    termsAccepted: true;
+    privacyAcknowledged: true;
+    contactAboutRequest: true;
+    version: string;
+    capturedAt: string;
+  };
   pricing: LeadPricingPayload;
   leadIntakeBrief: string;
 };

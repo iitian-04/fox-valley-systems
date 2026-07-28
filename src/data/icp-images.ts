@@ -5,9 +5,17 @@ type NicheHeroImage = {
   alt: string;
 };
 
+type ChatAdvisorImage = {
+  src: string;
+  alt: string;
+  label: string;
+};
+
+type ChatAdvisorGroup = "medical" | "legal" | "home-services";
+
 const nicheHeroImages = {
   "home-services": {
-    src: "/niche-heroes/home-services.jpg",
+    src: "/niche-heroes/home-services-v2.jpg",
     alt: "Home service technicians arriving for a residential service call",
   },
   "independent-imaging-centers": {
@@ -80,6 +88,45 @@ const nicheHeroImages = {
   },
 } as const satisfies Record<TrustedIcpSlug, NicheHeroImage>;
 
+const chatAdvisorGroups = {
+  "home-services": "home-services",
+  "independent-imaging-centers": "medical",
+  "radiology-groups": "medical",
+  "orthopedic-practices": "medical",
+  "dental-practices": "medical",
+  "med-spas": "medical",
+  "chiropractic-clinics": "medical",
+  "veterinary-clinics": "medical",
+  "physical-therapy-clinics": "medical",
+  "dermatology-practices": "medical",
+  "law-firms": "legal",
+  "hvac-companies": "home-services",
+  "plumbing-companies": "home-services",
+  "roofing-companies": "home-services",
+  "electrical-contractors": "home-services",
+  "garage-door-companies": "home-services",
+  "pest-control-companies": "home-services",
+  "landscaping-lawn-care-companies": "home-services",
+} as const satisfies Record<TrustedIcpSlug, ChatAdvisorGroup>;
+
+const chatAdvisorImages = {
+  medical: {
+    src: "/chat-advisors/medical.jpg",
+    alt: "Friendly medical workflow advisor",
+    label: "Medical workflow advisor",
+  },
+  legal: {
+    src: "/chat-advisors/legal.jpg",
+    alt: "Friendly legal workflow advisor",
+    label: "Legal workflow advisor",
+  },
+  "home-services": {
+    src: "/chat-advisors/home-services.jpg",
+    alt: "Friendly home services workflow advisor",
+    label: "Home services workflow advisor",
+  },
+} as const satisfies Record<ChatAdvisorGroup, ChatAdvisorImage>;
+
 export function getNicheHeroImage(slug: string): NicheHeroImage {
   const image = nicheHeroImages[slug as TrustedIcpSlug];
 
@@ -88,4 +135,14 @@ export function getNicheHeroImage(slug: string): NicheHeroImage {
   }
 
   return image;
+}
+
+export function getChatAdvisorImage(slug: string): ChatAdvisorImage {
+  const group = chatAdvisorGroups[slug as TrustedIcpSlug];
+
+  if (!group) {
+    throw new Error(`Missing chat advisor image configuration for "${slug}".`);
+  }
+
+  return chatAdvisorImages[group];
 }

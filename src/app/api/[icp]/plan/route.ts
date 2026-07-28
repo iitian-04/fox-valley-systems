@@ -6,6 +6,7 @@ import {
   type WorkflowItem,
 } from "@/data/icp-types";
 import { isLeadWebhookConfigured, sendLeadToWebhook } from "@/lib/lead-webhook";
+import { LEGAL_VERSION } from "@/lib/legal";
 import { formatUsd, getLivePriceUsd, resolvePromotion } from "@/lib/promo";
 import {
   cleanAttribution,
@@ -26,6 +27,8 @@ type PlanRequest = {
   automations?: unknown;
   attribution?: unknown;
   promotion?: unknown;
+  legalConsent?: unknown;
+  legalVersion?: unknown;
 };
 
 type SelectedWorkflow = {
@@ -85,6 +88,9 @@ export async function POST(request: Request, { params }: IcpRouteContext) {
   const goal = cleanSingleLineText(body.goal, 1800);
   const attribution = cleanAttribution(body.attribution);
   const promotion = resolvePromotion(body.promotion, attribution.utmPromo);
+  const legalConsent =
+    body.legalConsent === true &&
+    cleanSingleLineText(body.legalVersion, 40) === LEGAL_VERSION;
   const promotionRequestedCode =
     cleanSingleLineText(promotion.requestedCode, 20) || null;
   const promotionTimezone =
@@ -108,6 +114,13 @@ export async function POST(request: Request, { params }: IcpRouteContext) {
     );
   }
 
+  if (!legalConsent) {
+    return Response.json(
+      { error: "Please accept the Terms and acknowledge the Privacy Policy before sending your request." },
+      { status: 400 },
+    );
+  }
+
   if (!isLeadWebhookConfigured()) {
     return Response.json(
       { error: "Online plan delivery is temporarily unavailable. Please try again shortly." },
@@ -116,6 +129,13 @@ export async function POST(request: Request, { params }: IcpRouteContext) {
   }
 
   const capturedAt = new Date().toISOString();
+  const recordedLegalConsent = {
+    termsAccepted: true,
+    privacyAcknowledged: true,
+    contactAboutRequest: true,
+    version: LEGAL_VERSION,
+    capturedAt,
+  } as const;
   const attributionLines = [
     attribution.utmSource && `UTM source: ${attribution.utmSource}`,
     attribution.utmMedium && `UTM medium: ${attribution.utmMedium}`,
@@ -165,6 +185,7 @@ export async function POST(request: Request, { params }: IcpRouteContext) {
 
   const leadIntakeBrief = [
     `Vertical: ${bundle.siteConfig.industry}`,
+    `Terms and Privacy acknowledged: ${recordedLegalConsent.version} at ${capturedAt}`,
     `Pricing mode: ${promotion.pricingMode}`,
     `Promo applied: ${promotion.applied ? "YES — 50% link pricing" : "NO — regular pricing"}`,
     promotion.expiresAt && `Promo expires: ${promotion.expiresAt}${promotionTimezone ? ` (${promotionTimezone})` : ""}`,
@@ -197,6 +218,7 @@ export async function POST(request: Request, { params }: IcpRouteContext) {
     email,
     phone: phone || undefined,
     organization,
+    legalConsent: recordedLegalConsent,
     pricing,
     leadIntakeBrief,
   });

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowLeft,
   ArrowRight,
@@ -50,7 +51,7 @@ import {
   type WorkflowIcon,
   type WorkflowItem,
 } from "@/data/icp-types";
-import { getNicheHeroImage } from "@/data/icp-images";
+import { getChatAdvisorImage, getNicheHeroImage } from "@/data/icp-images";
 import { getWorkExample } from "@/data/work-examples";
 import {
   createLocalPromotion,
@@ -59,6 +60,7 @@ import {
   PROMO_QUERY_PARAM,
   type PromotionInput,
 } from "@/lib/promo";
+import { LEGAL_VERSION } from "@/lib/legal";
 
 type FormData = {
   name: string;
@@ -387,6 +389,7 @@ function WorkflowCard({
 
 export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
   const { categoryTabs, pricingTiers, siteConfig, workflows } = bundle;
+  const chatAdvisorImage = getChatAdvisorImage(siteConfig.slug);
   const [step, setStep] = useState(1);
   const [activeCategory, setActiveCategory] = useState("Popular");
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
@@ -405,6 +408,7 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
   const [chatInput, setChatInput] = useState("");
   const [chatSending, setChatSending] = useState(false);
   const [chatLeadCaptured, setChatLeadCaptured] = useState(false);
+  const [legalConsent, setLegalConsent] = useState(true);
   const [showSplash, setShowSplash] = useState(true);
   const [splashLeaving, setSplashLeaving] = useState(false);
   const [promotion, setPromotion] = useState<PromotionInput | null>(null);
@@ -554,6 +558,7 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
 
   const handleBusinessSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!legalConsent) return;
     setStep(3);
   };
 
@@ -573,6 +578,8 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
           ...form,
           attribution,
           promotion,
+          legalConsent,
+          legalVersion: LEGAL_VERSION,
           automations: selectedWorkflows.map(({ id }) => ({ id })),
         }),
       });
@@ -839,6 +846,29 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
                     <label className="wide"><span>Primary operational bottleneck</span><select required value={form.bottleneck} onChange={(event) => updateForm("bottleneck", event.target.value)}><option value="" disabled>Select the biggest bottleneck</option>{siteConfig.bottlenecks.map((option) => <option key={option}>{option}</option>)}</select></label>
                     <label className="wide"><span>What should the first workflow improve? <em>Optional</em></span><textarea value={form.goal} onChange={(event) => updateForm("goal", event.target.value)} placeholder="Describe the repetitive task, access gap, missed opportunity, or handoff you want fixed." /></label>
                   </div>
+                  <div className={`form-consent${legalConsent ? "" : " unchecked"}`}>
+                    <input
+                      id="legal-consent"
+                      type="checkbox"
+                      checked={legalConsent}
+                      onChange={(event) => setLegalConsent(event.target.checked)}
+                      required
+                      aria-describedby="legal-consent-detail"
+                    />
+                    <div>
+                      <label htmlFor="legal-consent">
+                        I agree to the Terms, acknowledge the Privacy Policy, and
+                        allow Elevate to contact me about this request.
+                      </label>
+                      <p id="legal-consent-detail">
+                        <Link href="/terms" target="_blank" rel="noopener noreferrer">Terms of Service</Link>
+                        <span>·</span>
+                        <Link href="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</Link>
+                        <span>—</span>
+                        {siteConfig.consentCopy}
+                      </p>
+                    </div>
+                  </div>
                 </form>
               </section>
             )}
@@ -896,7 +926,6 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
                 </div>
 
                 <div className="compliance-note"><ShieldCheck size={20} /><p><strong>Scope and safeguards are confirmed before launch.</strong> {siteConfig.complianceNote}</p></div>
-                <p className="consent-copy">{siteConfig.consentCopy}</p>
                 {submitState === "error" && <p className="submit-error" role="alert">{submitError} Please try again.</p>}
               </section>
             )}
@@ -932,14 +961,14 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
                 <>
                   <button type="button" className="back-action" onClick={() => setStep(1)}><ArrowLeft size={16} />Back</button>
                   <div className="action-context"><strong>{selectedIds.length} workflow{selectedIds.length === 1 ? "" : "s"} selected</strong><span>No payment required</span></div>
-                  <button type="submit" form="business-form" className="primary-action">Review My Plan <ArrowRight size={17} /></button>
+                  <button type="submit" form="business-form" className="primary-action" disabled={!legalConsent}>Review My Plan <ArrowRight size={17} /></button>
                 </>
               )}
               {step === 3 && (
                 <>
                   <button type="button" className="back-action" onClick={() => setStep(2)}><ArrowLeft size={16} />Back</button>
                   <div className="action-context"><strong>Ready to send</strong><span>Scope review comes before any build</span></div>
-                  <button type="button" className="primary-action" disabled={submitState === "sending"} onClick={sendPlan}>
+                  <button type="button" className="primary-action" disabled={submitState === "sending" || !legalConsent} onClick={sendPlan}>
                     {submitState === "sending" ? <><span className="button-spinner" />Sending…</> : <>Send My Workflow Plan <Send size={17} /></>}
                   </button>
                 </>
@@ -1108,8 +1137,8 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
             <aside className="chat-visual">
               <button type="button" className="chat-close-mobile" onClick={() => setChatOpen(false)} aria-label="Close chat"><X size={18} /></button>
               <div className="chat-brand"><Wordmark compact /><span>24/7 Chat</span></div>
-              <div className="voice-orb"><Image src="/ai-voice-orb-cutout.png" alt="Abstract AI assistant visualization" fill sizes="360px" loading="eager" /></div>
-              <span className="advisor-status"><i /> AI workflow advisor</span>
+              <div className="advisor-portrait"><Image src={chatAdvisorImage.src} alt={chatAdvisorImage.alt} fill sizes="(max-width: 760px) 180px, 330px" loading="eager" /></div>
+              <span className="advisor-status"><i /> {chatAdvisorImage.label}</span>
               <h2>Find the first workflow worth building.</h2>
               <p>Describe the bottleneck. The advisor will help frame a practical starting point for {siteConfig.audiencePlural}.</p>
               <div className="chat-principles"><span><Check size={12} />No generic package</span><span><Check size={12} />Human handoff</span><span><Check size={12} />Scope first</span></div>
