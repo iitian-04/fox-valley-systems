@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:webhook": "node --env-file-if-exists=.env.local scripts/send-test-lead.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.25.0",

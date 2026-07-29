@@ -38,6 +38,7 @@ import {
 import {
   type CSSProperties,
   type FormEvent,
+  type MouseEvent,
   useCallback,
   useEffect,
   useMemo,
@@ -99,6 +100,20 @@ type ChatResponse = {
   leadSubmitted?: boolean;
   error?: string;
 };
+
+type WebhookTestResponse = {
+  leadSubmitted?: boolean;
+  submittedAt?: string;
+  error?: string;
+};
+
+type WebhookTestStatus =
+  | { state: "sending"; message: string }
+  | { state: "success"; message: string }
+  | { state: "error"; message: string };
+
+const WEBHOOK_TEST_CLICK_COUNT = 20;
+const WEBHOOK_TEST_CLICK_WINDOW_MS = 8_000;
 
 const iconMap: Record<WorkflowIcon, LucideIcon> = {
   headset: Headphones,
@@ -413,8 +428,11 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
   const [splashLeaving, setSplashLeaving] = useState(false);
   const [promotion, setPromotion] = useState<PromotionInput | null>(null);
   const [promoExpired, setPromoExpired] = useState(false);
+  const [webhookTestStatus, setWebhookTestStatus] =
+    useState<WebhookTestStatus | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const chatEndRef = useRef<HTMLDivElement>(null);
+  const logoClickTimesRef = useRef<number[]>([]);
 
   const stepContent = [
     {
@@ -546,6 +564,15 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
     };
   }, [chatOpen, pricingOpen, standardsOpen, workExampleOpen]);
 
+  useEffect(() => {
+    if (webhookTestStatus?.state !== "success") return;
+    const hideTimer = window.setTimeout(
+      () => setWebhookTestStatus(null),
+      6_000,
+    );
+    return () => window.clearTimeout(hideTimer);
+  }, [webhookTestStatus]);
+
   const toggleWorkflow = (id: string) => {
     setSelectedIds((current) =>
       current.includes(id) ? current.filter((selectedId) => selectedId !== id) : [...current, id],
@@ -566,6 +593,68 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
     setPromotion(null);
     setPromoExpired(true);
   }, []);
+
+  const sendLogoWebhookTest = async (clickTimes: number[]) => {
+    const clickIntervalsMs = clickTimes
+      .slice(1)
+      .map((time, index) => time - clickTimes[index]);
+
+    setWebhookTestStatus({
+      state: "sending",
+      message: `Sending a fully populated ${siteConfig.industry} test lead…`,
+    });
+
+    try {
+      const response = await fetch("/api/internal/webhook-test", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          icp: siteConfig.slug,
+          trigger: "logo-20-clicks",
+          clickIntervalsMs,
+        }),
+      });
+      const data = await response.json() as WebhookTestResponse;
+
+      if (!response.ok || !data.leadSubmitted) {
+        throw new Error(
+          response.status === 404
+            ? "Test trigger rejected. Check LEAD_TEST_SECRET in Vercel and redeploy."
+            : data.error || "The test webhook could not be delivered.",
+        );
+      }
+
+      setWebhookTestStatus({
+        state: "success",
+        message: `Test webhook sent for ${siteConfig.industry}.`,
+      });
+    } catch (error) {
+      setWebhookTestStatus({
+        state: "error",
+        message:
+          error instanceof Error
+            ? error.message
+            : "The test webhook could not be delivered.",
+      });
+    }
+  };
+
+  const handleBrandClick = (event: MouseEvent<HTMLButtonElement>) => {
+    setStep(1);
+    if (!event.isTrusted || webhookTestStatus?.state === "sending") return;
+
+    const now = Date.now();
+    const recentClicks = logoClickTimesRef.current.filter(
+      (clickTime) => now - clickTime <= WEBHOOK_TEST_CLICK_WINDOW_MS,
+    );
+    recentClicks.push(now);
+    logoClickTimesRef.current = recentClicks;
+
+    if (recentClicks.length !== WEBHOOK_TEST_CLICK_COUNT) return;
+
+    logoClickTimesRef.current = [];
+    void sendLogoWebhookTest(recentClicks);
+  };
 
   const sendPlan = async () => {
     setSubmitState("sending");
@@ -649,7 +738,7 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
       <div className="ambient ambient-two" />
 
       <header className="site-header">
-        <button className="site-header-brand" type="button" onClick={() => setStep(1)} aria-label="Elevate home">
+        <button className="site-header-brand" type="button" onClick={handleBrandClick} aria-label="Elevate home">
           <Wordmark compact />
           <span><strong>{siteConfig.industry}</strong><small>Done-for-you AI automation</small></span>
         </button>
@@ -704,6 +793,42 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
         />
       )}
       {promoExpired && <p className="sr-only" role="status">The promotional window ended. Regular starting prices are now shown.</p>}
+      {webhookTestStatus && (
+        <div
+          className={`webhook-test-toast ${webhookTestStatus.state}`}
+          role="status"
+          aria-live="polite"
+        >
+          <span aria-hidden="true">
+            {webhookTestStatus.state === "sending" ? (
+              <RefreshCw size={17} />
+            ) : webhookTestStatus.state === "success" ? (
+              <Check size={17} />
+            ) : (
+              <X size={17} />
+            )}
+          </span>
+          <div>
+            <strong>
+              {webhookTestStatus.state === "sending"
+                ? "Webhook test"
+                : webhookTestStatus.state === "success"
+                  ? "Test delivered"
+                  : "Test failed"}
+            </strong>
+            <small>{webhookTestStatus.message}</small>
+          </div>
+          {webhookTestStatus.state !== "sending" && (
+            <button
+              type="button"
+              onClick={() => setWebhookTestStatus(null)}
+              aria-label="Dismiss webhook test status"
+            >
+              <X size={14} />
+            </button>
+          )}
+        </div>
+      )}
 
       <section className="app-shell" aria-label={`Elevate workflow planner for ${siteConfig.industry}`}>
         <ProfilePanel siteConfig={siteConfig} onOpenStandards={() => setStandardsOpen(true)} />

@@ -44,12 +44,14 @@ Open `http://localhost:3000`.
 
 ```dotenv
 LEAD_DELIVERY_WEBHOOK_URL=https://your-webhook.example/leads
+LEAD_TEST_SECRET=generate-a-long-random-secret
 OPENAI_API_KEY=
 OPENAI_CHAT_MODEL=gpt-5.4-mini
 NEXT_PUBLIC_SITE_URL=https://your-production-domain.com
 ```
 
 - `LEAD_DELIVERY_WEBHOOK_URL` receives workflow-plan and AI-chat leads from every ICP. Payloads include the trusted vertical, active route, regular/live prices, promotional status, and attribution.
+- `LEAD_TEST_SECRET` enables the protected test-lead trigger and authenticates the optional terminal test command. Use a long random value in the target Vercel environment.
 - `OPENAI_API_KEY` enables the optional AI workflow advisor.
 - `OPENAI_CHAT_MODEL` selects the Responses API model.
 - `NEXT_PUBLIC_SITE_URL` enables absolute canonical metadata outside Vercel. Vercel’s production URL is used automatically when available.
@@ -74,6 +76,36 @@ POST /api/{icp}/chat
 ```
 
 The server validates `{icp}` against the explicit registry before selecting workflows, prices, safeguards, or AI instructions. Raw URL or UTM values are never inserted into the AI system prompt.
+
+## Testing lead delivery
+
+The hidden test endpoint sends a fully populated synthetic lead through the
+same webhook delivery function used by real submissions. It returns a 404 when
+`LEAD_TEST_SECRET` is missing or when a request does not satisfy one of the
+protected trigger paths.
+
+Generate a secret and add it to `.env.local` and the target Vercel environment:
+
+```bash
+openssl rand -hex 32
+```
+
+On the website, click or tap the Elevate header logo exactly 20 times in quick
+succession. The current route determines the test ICP, and a small status
+message confirms whether delivery succeeded. The browser trigger requires
+trusted click events, same-origin request metadata, human-like click timing,
+and a server-side cooldown. `LEAD_TEST_SECRET` stays server-side and acts as
+the enable/disable switch.
+
+The endpoint can also be tested from the project folder:
+
+```bash
+npm run test:webhook -- https://your-production-domain.com home-services
+```
+
+Test deliveries use `source: "elevate-test"`, `isTest: true`, a reserved
+fictional phone number, a non-deliverable example email address, and the
+heading `TEST LEAD — DO NOT CONTACT` in the brief.
 
 ## Deploying to Vercel
 

@@ -34,7 +34,8 @@ export type LeadPricingPayload = {
 };
 
 export type LeadWebhookPayload = {
-  source: "elevate-chat" | "elevate-plan";
+  source: "elevate-chat" | "elevate-plan" | "elevate-test";
+  isTest: boolean;
   vertical: string;
   icp: {
     slug: string;
@@ -46,6 +47,12 @@ export type LeadWebhookPayload = {
   email?: string;
   phone?: string;
   organization?: string;
+  businessWebsite: string | null;
+  businessScale: string | null;
+  currentSoftware: string | null;
+  primaryBottleneck: string | null;
+  desiredOutcome: string | null;
+  workflowSummary: string | null;
   legalConsent?: {
     termsAccepted: true;
     privacyAcknowledged: true;
@@ -54,6 +61,7 @@ export type LeadWebhookPayload = {
     capturedAt: string;
   };
   pricing: LeadPricingPayload;
+  submittedAt: string;
   leadIntakeBrief: string;
 };
 

@@ -207,6 +207,7 @@ export async function POST(request: Request, { params }: IcpRouteContext) {
 
   const leadSubmitted = await sendLeadToWebhook({
     source: "elevate-plan",
+    isTest: false,
     vertical: bundle.siteConfig.slug,
     icp: {
       slug: bundle.siteConfig.slug,
@@ -218,8 +219,17 @@ export async function POST(request: Request, { params }: IcpRouteContext) {
     email,
     phone: phone || undefined,
     organization,
+    businessWebsite: website || null,
+    businessScale: scale || null,
+    currentSoftware: software || null,
+    primaryBottleneck: bottleneck,
+    desiredOutcome: goal || null,
+    workflowSummary: selectedWorkflows
+      .map(({ workflow }) => workflow.name)
+      .join(", "),
     legalConsent: recordedLegalConsent,
     pricing,
+    submittedAt: capturedAt,
     leadIntakeBrief,
   });
 

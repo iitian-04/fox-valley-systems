@@ -406,6 +406,100 @@ textarea:focus-visible {
   font-weight: 800;
 }
 
+.webhook-test-toast {
+  position: fixed;
+  right: 18px;
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 1000;
+  width: min(360px, calc(100vw - 28px));
+  min-height: 70px;
+  padding: 12px;
+  border: 1px solid rgba(147, 175, 216, 0.25);
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  color: #edf5ff;
+  background: rgba(14, 25, 40, 0.96);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(18px);
+  animation: webhook-test-toast-in 0.24s ease-out both;
+}
+
+.webhook-test-toast > span {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: #90b1ff;
+  background: rgba(66, 119, 240, 0.16);
+}
+
+.webhook-test-toast.sending > span svg {
+  animation: webhook-test-spin 0.9s linear infinite;
+}
+
+.webhook-test-toast.success {
+  border-color: rgba(75, 218, 170, 0.3);
+}
+
+.webhook-test-toast.success > span {
+  color: #7fe0bd;
+  background: rgba(58, 190, 143, 0.14);
+}
+
+.webhook-test-toast.error {
+  border-color: rgba(255, 124, 124, 0.28);
+}
+
+.webhook-test-toast.error > span {
+  color: #ff9c9c;
+  background: rgba(222, 76, 76, 0.13);
+}
+
+.webhook-test-toast > div {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.webhook-test-toast strong {
+  font-size: 10px;
+}
+
+.webhook-test-toast small {
+  color: #98a9bf;
+  font-size: 8px;
+  line-height: 1.45;
+}
+
+.webhook-test-toast > button {
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  color: #8fa1b8;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+}
+
+@keyframes webhook-test-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+}
+
+@keyframes webhook-test-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .promo-banner {
   position: relative;
   z-index: 3;
