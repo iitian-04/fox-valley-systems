@@ -135,6 +135,14 @@ const iconMap: Record<WorkflowIcon, LucideIcon> = {
   "users-round": UsersRound,
 };
 
+const workflowOutcomeByTier: Record<WorkflowItem["tier"], string> = {
+  "quick-start": "Faster response with less manual follow-up.",
+  "connected-workflow": "Cleaner handoffs with fewer requests slipping through.",
+  "growth-system": "More opportunities receive consistent follow-up.",
+  "ai-calling": "More calls handled with a clear human handoff.",
+  advanced: "Clearer ownership, visibility, and fewer process gaps.",
+};
+
 const initialForm: FormData = {
   name: "",
   email: "",
@@ -386,7 +394,10 @@ function WorkflowCard({
             {workflow.badge && <em>{workflow.badge}</em>}
           </span>
           <span className="automation-description">{workflow.description}</span>
-          {workflow.requirement && <span className="requirement">Needs: {workflow.requirement}</span>}
+          <span className="workflow-card-notes">
+            <span className="workflow-card-note workflow-outcome"><strong>Outcome:</strong> {workflow.outcome ?? workflowOutcomeByTier[workflow.tier]}</span>
+            {workflow.requirement && <span className="workflow-card-note requirement"><strong>Needs:</strong> {workflow.requirement}</span>}
+          </span>
         </span>
         <span className="select-control">{selected ? <Check size={16} /> : <Plus size={16} />}</span>
       </button>
@@ -953,7 +964,6 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
                   <div><span>Short configuration brief</span><h3>Give the workflow enough operating context.</h3></div>
                   <p>We use this to recommend a sensible first build—not to drop you into a generic package.</p>
                 </div>
-                <p className="form-safety-note"><ShieldCheck size={15} /><span>Business operations only. Do not submit patient, customer, client, employee, or other sensitive personal information.</span></p>
                 <form id="business-form" className="business-form" onSubmit={handleBusinessSubmit}>
                   <div className="form-section-heading"><span>01</span><div><strong>Who should receive the plan?</strong><p>Only the essentials are required.</p></div></div>
                   <div className="field-grid">

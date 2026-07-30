@@ -68,6 +68,7 @@ export const workflows: WorkflowItem[] = [
     name: "Missed-Call Job Rescue",
     description:
       "Responds to missed callers, captures the service need, location, timing, and contact details, then alerts the office.",
+    outcome: "Fewer missed callers go cold before the office can respond.",
     categories: ["Popular", "Lead Capture", "Estimates & Follow-Up"],
     icon: "phone-missed",
     badge: "Best first step",
@@ -79,6 +80,7 @@ export const workflows: WorkflowItem[] = [
     name: "Instant Web-Lead Response",
     description:
       "Acknowledges form and campaign leads quickly, fills in missing job details, and routes each reply to the next owner.",
+    outcome: "New web leads receive a fast reply and reach the right owner with better context.",
     categories: ["Popular", "Lead Capture", "Estimates & Follow-Up"],
     icon: "zap",
     badge: "Quick win",
@@ -90,6 +92,7 @@ export const workflows: WorkflowItem[] = [
     name: "Service-Area Checker",
     description:
       "Confirms whether the submitted location is inside the company’s approved service territory.",
+    outcome: "Out-of-area requests are filtered early, saving staff review time.",
     categories: ["Popular", "Lead Capture", "Operations"],
     icon: "route",
     badge: "Quick win",
@@ -101,6 +104,7 @@ export const workflows: WorkflowItem[] = [
     name: "Structured Job-Request Intake",
     description:
       "Collects the customer-reported need, property details, timing, access notes, and contact information without diagnosing the job.",
+    outcome: "Every request arrives with the details needed to qualify and route it.",
     categories: ["Popular", "Lead Capture", "Scheduling & Dispatch"],
     icon: "clipboard-list",
     badge: "Admin saver",
@@ -112,6 +116,7 @@ export const workflows: WorkflowItem[] = [
     name: "Booking & Dispatch Handoff",
     description:
       "Books within approved rules or creates a clean staff-confirmation task with the details needed for the next step.",
+    outcome: "Bookings reach dispatch with fewer missing details and less back-and-forth.",
     categories: ["Popular", "Scheduling & Dispatch"],
     icon: "calendar-check",
     badge: "High impact",
@@ -123,6 +128,7 @@ export const workflows: WorkflowItem[] = [
     name: "Appointment Reminder & Reschedule",
     description:
       "Sends approved reminders and captures confirmation or reschedule requests before field time is lost.",
+    outcome: "More appointments are confirmed or rescheduled before field time is lost.",
     categories: ["Scheduling & Dispatch", "Estimates & Follow-Up"],
     icon: "calendar-clock",
     badge: "Quick win",
@@ -134,6 +140,7 @@ export const workflows: WorkflowItem[] = [
     name: "24/7 Home Service AI Receptionist",
     description:
       "Answers approved administrative questions, captures job-ready details, and transfers technical, safety, pricing, or uncertain conversations.",
+    outcome: "More calls are answered with complete, staff-ready request details.",
     categories: ["Popular", "Lead Capture", "AI Calling"],
     icon: "headset",
     badge: "AI calling",
@@ -145,6 +152,7 @@ export const workflows: WorkflowItem[] = [
     name: "After-Hours Call Coverage",
     description:
       "Captures requests outside office hours and follows company-approved priority, transfer, and next-day handoff rules.",
+    outcome: "After-hours demand is captured instead of waiting for the office to reopen.",
     categories: ["AI Calling", "Lead Capture", "Operations"],
     icon: "headset",
     badge: "AI calling",
@@ -156,6 +164,7 @@ export const workflows: WorkflowItem[] = [
     name: "Open Estimate Follow-Up",
     description:
       "Runs a measured, stop-on-reply follow-up sequence for eligible estimates and alerts the assigned team member.",
+    outcome: "Open estimates receive consistent follow-up without daily staff chasing.",
     categories: ["Popular", "Estimates & Follow-Up"],
     icon: "workflow",
     badge: "High impact",
@@ -167,6 +176,7 @@ export const workflows: WorkflowItem[] = [
     name: "Lapsed Customer Reactivation",
     description:
       "Segments an approved past-customer audience and runs a relevant win-back sequence with reply and opt-out handling.",
+    outcome: "Past customers re-enter the pipeline through timely, relevant outreach.",
     categories: ["Customer Retention", "Estimates & Follow-Up"],
     icon: "users-round",
     requirement: "Approved audience and consent review",
@@ -177,6 +187,7 @@ export const workflows: WorkflowItem[] = [
     name: "Seasonal Customer Outreach",
     description:
       "Prepares approved reminders and campaigns when the season, weather, or service history creates a relevant need.",
+    outcome: "Customers hear from you when seasonal demand is most relevant.",
     categories: ["Customer Retention", "Operations"],
     icon: "bell",
     requirement: "Approved audience, trigger, and message",
@@ -187,6 +198,7 @@ export const workflows: WorkflowItem[] = [
     name: "Job-Complete Customer Follow-Up",
     description:
       "Sends an approved completion message, routes service concerns privately, and requests feedback at the defined moment.",
+    outcome: "Service issues surface privately while satisfied customers are prompted for feedback.",
     categories: ["Estimates & Follow-Up", "Customer Retention"],
     icon: "messages-square",
     requirement: "Completed-job trigger and approved messaging",
@@ -197,6 +209,7 @@ export const workflows: WorkflowItem[] = [
     name: "Form, Call & Field-Service Sync",
     description:
       "Creates or updates approved lead, customer, and job records from calls, forms, and messages in supported systems.",
+    outcome: "Customer and job records stay current without duplicate manual entry.",
     categories: ["Lead Capture", "Operations"],
     icon: "database",
     badge: "Admin saver",
@@ -208,6 +221,7 @@ export const workflows: WorkflowItem[] = [
     name: "Capacity & Territory Router",
     description:
       "Routes requests by geography, job type, hours, team capacity, and company-approved priorities.",
+    outcome: "Each request reaches the right territory and available team faster.",
     categories: ["Scheduling & Dispatch", "Operations", "Advanced"],
     icon: "route",
     badge: "Advanced",
@@ -219,6 +233,7 @@ export const workflows: WorkflowItem[] = [
     name: "Lead & Service Operations Dashboard",
     description:
       "Shows source, response status, booking handoff, estimate stage, unresolved requests, and operational patterns.",
+    outcome: "Owners see response gaps, stalled estimates, and unresolved requests in one place.",
     categories: ["Operations", "Advanced"],
     icon: "chart-column",
     badge: "Advanced",
@@ -230,6 +245,7 @@ export const workflows: WorkflowItem[] = [
     name: "Multi-Team Service Orchestration",
     description:
       "Coordinates intake, routing, booking, follow-up, record updates, and reporting across branches or service teams.",
+    outcome: "Branches follow one connected process with fewer dropped handoffs.",
     categories: ["Scheduling & Dispatch", "Operations", "Advanced"],
     icon: "workflow",
     badge: "Advanced",

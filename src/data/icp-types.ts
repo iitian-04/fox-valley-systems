@@ -95,6 +95,7 @@ export type WorkflowItem = {
   id: string;
   name: string;
   description: string;
+  outcome?: string;
   categories: readonly string[];
   icon: WorkflowIcon;
   badge?: WorkflowBadge;

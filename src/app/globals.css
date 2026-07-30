@@ -81,25 +81,6 @@ body {
   border-color: color-mix(in srgb, var(--blue) 48%, transparent);
 }
 
-.form-safety-note {
-  margin: 0 0 15px;
-  padding: 10px 12px;
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  border: 1px solid color-mix(in srgb, var(--cyan) 16%, transparent);
-  border-radius: 12px;
-  color: #8fa0b8;
-  background: color-mix(in srgb, var(--cyan) 3.5%, transparent);
-  font-size: 8px;
-  line-height: 1.45;
-}
-
-.form-safety-note svg {
-  flex: 0 0 auto;
-  color: var(--cyan);
-}
-
 body.modal-open {
   overflow: hidden;
 }
@@ -1499,11 +1480,30 @@ textarea:focus-visible {
   line-height: 1.48;
 }
 
-.requirement {
+.workflow-card-notes {
   margin-top: 7px;
+  display: grid;
+  gap: 3px;
+}
+
+.workflow-card-note {
+  display: block;
   color: #718199;
   font-size: 7.5px;
   line-height: 1.35;
+}
+
+.workflow-card-note strong {
+  color: #8998ad;
+  font-size: inherit;
+}
+
+.workflow-outcome {
+  color: #8faecb;
+}
+
+.workflow-outcome strong {
+  color: #8fd4bb;
 }
 
 .select-control {
@@ -4934,22 +4934,53 @@ textarea:focus-visible {
 
   .field-grid {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 8px;
   }
 
   .field-grid label.wide {
     grid-column: auto;
   }
 
+  .business-form {
+    margin-top: 16px;
+  }
+
+  .form-section-heading + .field-grid {
+    margin-top: 9px;
+  }
+
+  .field-grid + .form-section-heading {
+    margin-top: 18px;
+    padding-top: 16px;
+  }
+
+  .form-section-heading > span {
+    width: 28px;
+    height: 28px;
+    border-radius: 9px;
+  }
+
+  .field-grid label > span {
+    margin-bottom: 4px;
+  }
+
   .field-grid input,
   .field-grid select,
   .field-grid textarea {
+    border-radius: 11px;
     font-size: 16px;
   }
 
   .field-grid input,
   .field-grid select {
-    height: 47px;
+    height: 44px;
+    padding-right: 11px;
+    padding-left: 11px;
+  }
+
+  .field-grid textarea {
+    min-height: 78px;
+    padding: 10px 11px;
   }
 
   .review-hero {
