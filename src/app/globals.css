@@ -910,7 +910,7 @@ textarea:focus-visible {
 
 .feedback-card {
   width: 100%;
-  min-height: 60px;
+  min-height: 62px;
   margin-top: 14px;
   padding: 10px 12px;
   appearance: none;
@@ -966,7 +966,10 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   gap: 4px;
-  white-space: nowrap;
+  white-space: normal;
+  flex-wrap: wrap;
+  row-gap: 2px;
+  line-height: 1.45;
 }
 
 .feedback-rating-line i {
@@ -981,6 +984,7 @@ textarea:focus-visible {
 
 .feedback-card > svg {
   color: var(--blue-2);
+  flex: 0 0 auto;
 }
 
 .trust-grid {
@@ -1611,6 +1615,7 @@ textarea:focus-visible {
 .workflow-card-note > svg {
   margin-top: 2px;
   color: var(--t4);
+  flex: 0 0 auto;
 }
 
 .workflow-card-note strong {
@@ -1629,6 +1634,7 @@ textarea:focus-visible {
 
 .workflow-outcome > svg {
   color: var(--text-positive);
+  flex: 0 0 auto;
 }
 
 /*
@@ -2872,6 +2878,7 @@ textarea:focus-visible {
 
 .workflow-example-business > svg {
   color: var(--text-positive);
+  flex: 0 0 auto;
 }
 
 .workflow-example-card > h3 {
