@@ -67,7 +67,7 @@ export const siteConfig = {
   "audiencePlural": "electrical contractors",
   "segment": "Residential electrical service companies with multiple field technicians",
   "persona": "Owner or service manager",
-  "eyebrow": "AI service-call workflows",
+  "eyebrow": "service-call workflows",
   "headline": "Capture qualified service requests and keep estimates moving.",
   "subheadline": "Collect the job details your office needs, route approved requests, and follow up consistently without adding another office role.",
   "mobileHeadline": "Turn missed electrical inquiries into clear dispatch handoffs.",
@@ -104,20 +104,20 @@ export const siteConfig = {
     "Start small, expand later"
   ],
   "complianceNote": "Automation does not diagnose electrical problems, provide safety instructions, give fixed quotes, or guarantee job volume. Technical, hazardous, unclear, and exception cases follow contractor-approved escalation rules.",
-  "consentCopy": "By submitting, you agree that Elevate may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
-  "chatWelcome": "Hi—I’m Elevate’s AI workflow advisor for electrical contractors. Tell me where calls, dispatch, or estimates get stuck, and I’ll help identify a safe first workflow.",
+  "consentCopy": "By submitting, you agree that Fox Valley Systems may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
+  "chatWelcome": "Hi—I’m the Fox Valley workflow advisor for electrical contractors. Tell me where calls, dispatch, or estimates get stuck, and I’ll help identify a safe first workflow.",
   "chatSuggestions": [
     "We miss too many calls",
     "Dispatch needs cleaner intake",
     "Estimates are not followed up"
   ],
-  "metaTitle": "Elevate — AI Workflows for Electrical Contractors",
-  "metaDescription": "Explore AI service-call intake, dispatch handoff, estimate follow-up, scheduling, and electrical operations workflows.",
+  "metaTitle": "Fox Valley Systems — Workflows for Electrical Contractors",
+  "metaDescription": "Explore service-call intake, dispatch handoff, estimate follow-up, scheduling, and electrical operations workflows.",
   "theme": {
-    "accent": "#f0ad32",
-    "accentStrong": "#d58512",
-    "accentSoft": "rgba(240, 173, 50, 0.16)",
-    "secondary": "#5fd5ff"
+    "accent": "#2563eb",
+    "accentStrong": "#2563eb",
+    "accentSoft": "rgba(37, 99, 235, 0.09)",
+    "secondary": "#6b7280"
   },
   "buildNotes": [
     {
@@ -171,10 +171,10 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     "id": "ai-calling",
-    "name": "AI Call Coverage",
+    "name": "Call Coverage",
     "setup": 4995,
     "timeline": "5–10 business days",
-    "summary": "Approved inbound or outbound AI calling with structured intake and human handoff.",
+    "summary": "Approved inbound or outbound calling with structured intake and human handoff.",
     "usageNote": "Phone and AI-provider usage is separate"
   },
   {
@@ -258,7 +258,7 @@ export const workflows: WorkflowItem[] = [
   },
   {
     "id": "electrical-ai-receptionist",
-    "name": "Electrical AI Receptionist",
+    "name": "Call Answering",
     "description": "Answers approved administrative questions, captures service requests, and transfers technical or urgent exceptions.",
     "categories": [
       "Popular",

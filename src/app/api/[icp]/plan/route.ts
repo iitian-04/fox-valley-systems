@@ -206,7 +206,7 @@ export async function POST(request: Request, { params }: IcpRouteContext) {
   ].filter(Boolean).join("\n");
 
   const leadSubmitted = await sendLeadToWebhook({
-    source: "elevate-plan",
+    source: "fox-valley-plan",
     isTest: false,
     vertical: bundle.siteConfig.slug,
     icp: {

@@ -65,7 +65,7 @@ export const siteConfig = {
   audiencePlural: "med spas",
   segment: "Independent med spas and growing multi-location aesthetic practices",
   persona: "Med spa owner, clinic manager, or marketing and operations lead",
-  eyebrow: "AI lead workflows for med spas",
+  eyebrow: "Lead workflows for med spas",
   headline: "Turn more paid leads into booked consultations while interest is still high.",
   subheadline:
     "Give every inquiry a fast, polished response, a clear path to consultation, and consistent follow-up that respects your brand, quiet hours, and opt-out rules.",
@@ -124,24 +124,24 @@ export const siteConfig = {
     },
   ],
   complianceNote:
-    "Elevate supports administrative lead response, consultation requests, reminders, follow-up, reactivation, and operations. It does not assess treatment suitability, provide medical advice, make clinical claims, recommend procedures, promise results, or replace licensed judgment. Approved offers and marketing language remain subject to practice and legal review. Privacy, security, consent, recording, messaging, opt-out, advertising, and integration requirements are reviewed during scope; no legal or compliance guarantee is implied. Do not submit patient or client information in this business inquiry form.",
+    "Fox Valley Systems supports administrative lead response, consultation requests, reminders, follow-up, reactivation, and operations. It does not assess treatment suitability, provide medical advice, make clinical claims, recommend procedures, promise results, or replace licensed judgment. Approved offers and marketing language remain subject to practice and legal review. Privacy, security, consent, recording, messaging, opt-out, advertising, and integration requirements are reviewed during scope; no legal or compliance guarantee is implied. Do not submit patient or client information in this business inquiry form.",
   consentCopy:
-    "This form is for med spa operations inquiries only—do not include patient or client information. By submitting, you agree that Elevate may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
+    "This form is for med spa operations inquiries only—do not include patient or client information. By submitting, you agree that Fox Valley Systems may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
   chatWelcome:
-    "Hi—I’m Elevate’s AI workflow advisor for med spas. Tell me where lead response, consultation booking, follow-up, or reactivation breaks down, and I’ll help identify a practical first workflow.",
+    "Hi—I’m the Fox Valley workflow advisor for med spas. Tell me where lead response, consultation booking, follow-up, or reactivation breaks down, and I’ll help identify a practical first workflow.",
   chatSuggestions: [
     "Paid leads wait too long",
     "Too many leads stop replying",
     "We need to reactivate clients",
   ],
-  metaTitle: "Elevate — AI Lead Workflows for Med Spas",
+  metaTitle: "Fox Valley Systems — Lead Workflows for Med Spas",
   metaDescription:
-    "Explore practical AI speed-to-lead, consultation-booking, nurture, reactivation, and med-spa operations workflows.",
+    "Explore practical speed-to-lead, consultation-booking, nurture, reactivation, and med-spa operations workflows.",
   theme: {
-    accent: "#9a5cff",
-    accentStrong: "#7440df",
-    accentSoft: "rgba(154, 92, 255, 0.17)",
-    secondary: "#48d6bd",
+    accent: "#2563eb",
+    accentStrong: "#2563eb",
+    accentSoft: "rgba(37, 99, 235, 0.09)",
+    secondary: "#6b7280"
   },
 } as const;
 
@@ -169,7 +169,7 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     id: "ai-calling",
-    name: "Premium AI Lead Concierge",
+    name: "Premium Lead Concierge",
     setup: 4495,
     timeline: "1–2 weeks",
     summary: "Approved inbound or outbound administrative calls with a polished human escalation path.",
@@ -292,7 +292,7 @@ export const workflows: WorkflowItem[] = [
   },
   {
     id: "premium-ai-lead-concierge",
-    name: "Premium AI Lead Concierge",
+    name: "Premium Lead Concierge",
     description: "Handles approved lead calls, captures consultation interest, and transfers clinical, sensitive, or high-value exceptions to staff.",
     categories: ["Popular", "Lead Capture", "Consultations"],
     icon: "headset",

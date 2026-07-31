@@ -65,7 +65,7 @@ export const siteConfig = {
   audiencePlural: "veterinary clinics",
   segment: "Independent and multi-doctor veterinary clinics",
   persona: "Practice manager, hospital administrator, or owner-veterinarian",
-  eyebrow: "AI client-access workflows",
+  eyebrow: "client-access workflows",
   headline: "Take routine calls off your team while sensitive cases still reach a human.",
   subheadline:
     "Capture appointment requests, answer approved administrative questions, and route client messages safely—without asking AI to diagnose or clinically triage a pet.",
@@ -124,22 +124,22 @@ export const siteConfig = {
   complianceNote:
     "These workflows support administrative communication only. They do not diagnose, recommend treatment, provide medication guidance, or determine whether a case is an emergency. Clinical, urgent, or uncertain requests follow practice-approved instructions and transfer to a person. Privacy, consent, recording, messaging, and system-access requirements are confirmed during scope review.",
   consentCopy:
-    "By submitting, you agree that Elevate may contact you about this business request. Message and data rates may apply. Reply STOP to opt out of text messages. Do not submit client or patient information.",
+    "By submitting, you agree that Fox Valley Systems may contact you about this business request. Message and data rates may apply. Reply STOP to opt out of text messages. Do not submit client or patient information.",
   chatWelcome:
-    "Hi—I’m Elevate’s AI workflow advisor for veterinary clinics. Tell me which routine calls or client requests consume the most team time, and I’ll help identify a safe first workflow.",
+    "Hi—I’m the Fox Valley workflow advisor for veterinary clinics. Tell me which routine calls or client requests consume the most team time, and I’ll help identify a safe first workflow.",
   chatSuggestions: [
     "Routine calls overwhelm reception",
     "After-hours requests pile up",
     "Appointment requests lack details",
   ],
-  metaTitle: "Elevate — AI Workflows for Veterinary Clinics",
+  metaTitle: "Fox Valley Systems — Workflows for Veterinary Clinics",
   metaDescription:
-    "Explore practical AI call-overflow, appointment-request, client-intake, follow-up, and operations workflows for veterinary clinics.",
+    "Explore practical call-overflow, appointment-request, client-intake, follow-up, and operations workflows for veterinary clinics.",
   theme: {
-    accent: "#27a978",
-    accentStrong: "#14835b",
-    accentSoft: "rgba(39, 169, 120, 0.16)",
-    secondary: "#66c7e8",
+    accent: "#2563eb",
+    accentStrong: "#2563eb",
+    accentSoft: "rgba(37, 99, 235, 0.09)",
+    secondary: "#6b7280"
   },
 } as const;
 
@@ -167,7 +167,7 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     id: "ai-calling",
-    name: "AI Call Coverage",
+    name: "Call Coverage",
     setup: 5495,
     timeline: "2–3 weeks",
     summary: "Approved inbound or outbound administrative call flows with staff escalation.",

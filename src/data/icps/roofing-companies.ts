@@ -66,7 +66,7 @@ export const siteConfig = {
   "audiencePlural": "roofing companies",
   "segment": "Residential roofing companies with active lead generation and sales teams",
   "persona": "Owner or sales manager",
-  "eyebrow": "AI lead-to-inspection workflows",
+  "eyebrow": "lead-to-inspection workflows",
   "headline": "Contact every roofing lead fast—and follow it through to inspection.",
   "subheadline": "Give storm, referral, and paid leads an immediate response, consistent follow-up, and a clear owner without relying on every rep to remember every touch.",
   "mobileHeadline": "Turn more roofing leads into booked inspections.",
@@ -103,20 +103,20 @@ export const siteConfig = {
     "Start small, expand later"
   ],
   "complianceNote": "Automation does not inspect a roof, make insurance or claim-approval promises, guarantee revenue, or provide a final estimate. Outreach cadence, consent, quiet hours, recording, opt-out, and local requirements are confirmed during scope review.",
-  "consentCopy": "By submitting, you agree that Elevate may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
-  "chatWelcome": "Hi—I’m Elevate’s AI workflow advisor for roofing companies. Tell me where leads, inspections, or estimates stall, and I’ll help identify a practical first workflow.",
+  "consentCopy": "By submitting, you agree that Fox Valley Systems may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
+  "chatWelcome": "Hi—I’m the Fox Valley workflow advisor for roofing companies. Tell me where leads, inspections, or estimates stall, and I’ll help identify a practical first workflow.",
   "chatSuggestions": [
     "Our reps respond too slowly",
     "Open estimates go cold",
     "Storm leads overwhelm us"
   ],
-  "metaTitle": "Elevate — AI Workflows for Roofing Companies",
-  "metaDescription": "Explore practical AI lead response, inspection booking, estimate follow-up, rep routing, and roofing operations workflows.",
+  "metaTitle": "Fox Valley Systems — Workflows for Roofing Companies",
+  "metaDescription": "Explore practical lead response, inspection booking, estimate follow-up, rep routing, and roofing operations workflows.",
   "theme": {
-    "accent": "#f07b3f",
-    "accentStrong": "#d85b22",
-    "accentSoft": "rgba(240, 123, 63, 0.17)",
-    "secondary": "#ffc66d"
+    "accent": "#2563eb",
+    "accentStrong": "#2563eb",
+    "accentSoft": "rgba(37, 99, 235, 0.09)",
+    "secondary": "#6b7280"
   },
   "buildNotes": [
     {
@@ -170,10 +170,10 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     "id": "ai-calling",
-    "name": "AI Lead Calling",
+    "name": "Outbound Lead Calling",
     "setup": 5295,
     "timeline": "5–10 business days",
-    "summary": "Approved inbound or outbound AI calling with structured intake and human handoff.",
+    "summary": "Approved inbound or outbound calling with structured intake and human handoff.",
     "usageNote": "Phone and AI-provider usage is separate"
   },
   {

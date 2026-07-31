@@ -17,19 +17,19 @@ export default function PrivacyPage() {
     <LegalPage
       eyebrow="Privacy"
       title="Privacy Policy"
-      summary="This Policy explains how Elevate handles information collected through this website, its workflow-planning forms, and the AI workflow advisor."
+      summary="This Policy explains how Fox Valley Systems handles information collected through this website, its workflow-planning forms, and the AI workflow advisor."
     >
       <section>
         <h2>1. Scope and responsible company</h2>
         <p>
-          This Privacy Policy applies to the public Elevate website,
+          This Privacy Policy applies to the public Fox Valley Systems website,
           workflow-planning forms, AI chat, and related inquiry communications
-          operated by {LEGAL_ENTITY} (“Elevate,” “we,” “us,” or “our”). It does
+          operated by {LEGAL_ENTITY} (“Fox Valley Systems,” “we,” “us,” or “our”). It does
           not replace privacy or data-processing terms in a separately signed
           client agreement.
         </p>
         <p>
-          Elevate is responsible for the personal information described in this
+          Fox Valley Systems is responsible for the personal information described in this
           Policy. Privacy questions and requests may be sent to{" "}
           <a href={`mailto:${LEGAL_EMAIL}`}>{LEGAL_EMAIL}</a>.
         </p>
@@ -225,7 +225,7 @@ export default function PrivacyPage() {
       <section>
         <h2>8. Canadian users</h2>
         <p>
-          Elevate operates in the United States and may serve Canadian
+          Fox Valley Systems operates in the United States and may serve Canadian
           businesses. Subject to applicable Canadian privacy law, you may
           request access to and correction of personal information, ask how it
           has been used or disclosed, and withdraw consent subject to legal or

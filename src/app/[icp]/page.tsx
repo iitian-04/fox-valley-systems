@@ -50,7 +50,7 @@ export async function generateMetadata({
       type: "website",
       title: siteConfig.metaTitle,
       description: siteConfig.metaDescription,
-      siteName: "Elevate",
+      siteName: "Fox Valley Systems",
       ...(publicSiteUrl ? { url: new URL(route, publicSiteUrl) } : {}),
       ...(publicSiteUrl
         ? {

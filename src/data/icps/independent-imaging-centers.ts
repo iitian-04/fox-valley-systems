@@ -65,7 +65,7 @@ export const siteConfig = {
   audiencePlural: "imaging centers",
   segment: "Independent imaging centers with 2–20 locations",
   persona: "Administrator, COO, or owner",
-  eyebrow: "AI patient-access workflows",
+  eyebrow: "patient-access workflows",
   headline: "Capture more imaging requests without adding to the phone queue.",
   subheadline:
     "Recover missed and after-hours inquiries, capture referral details, and route the next action to your team—using the systems you already have.",
@@ -124,22 +124,22 @@ export const siteConfig = {
   complianceNote:
     "Automation supports administrative patient access only. It does not read studies, provide medical advice, perform clinical triage, or replace staff judgment. Privacy, security, consent, recording, messaging, and integration requirements are confirmed during scope review; no compliance guarantee is implied.",
   consentCopy:
-    "By submitting, you agree that Elevate may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
+    "By submitting, you agree that Fox Valley Systems may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
   chatWelcome:
-    "Hi—I’m Elevate’s AI workflow advisor for imaging centers. Tell me where patient or referral access gets stuck, and I’ll help identify a practical first workflow.",
+    "Hi—I’m the Fox Valley workflow advisor for imaging centers. Tell me where patient or referral access gets stuck, and I’ll help identify a practical first workflow.",
   chatSuggestions: [
     "We abandon too many calls",
     "Referrals are slow to route",
     "After-hours requests pile up",
   ],
-  metaTitle: "Elevate — AI Workflows for Independent Imaging Centers",
+  metaTitle: "Fox Valley Systems — Workflows for Independent Imaging Centers",
   metaDescription:
-    "Explore practical AI patient-access, referral-intake, scheduling, follow-up, and reporting workflows for independent imaging centers.",
+    "Explore practical patient-access, referral-intake, scheduling, follow-up, and reporting workflows for independent imaging centers.",
   theme: {
-    accent: "#3d86ff",
-    accentStrong: "#2766e8",
-    accentSoft: "rgba(61, 134, 255, 0.16)",
-    secondary: "#46d7c5",
+    accent: "#2563eb",
+    accentStrong: "#2563eb",
+    accentSoft: "rgba(37, 99, 235, 0.09)",
+    secondary: "#6b7280"
   },
 } as const;
 
@@ -167,7 +167,7 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     id: "ai-calling",
-    name: "AI Call Coverage",
+    name: "Call Coverage",
     setup: 7495,
     timeline: "1–2 weeks",
     summary: "Approved inbound or outbound call workflows with staff escalation.",

@@ -65,7 +65,7 @@ export const siteConfig = {
   audiencePlural: "dental practices",
   segment: "Independent dental practices and growing multi-location groups",
   persona: "Owner-dentist, office manager, or practice administrator",
-  eyebrow: "AI workflows for dental practices",
+  eyebrow: "workflows for dental practices",
   headline: "Keep more chairs filled without keeping your front desk on the phone.",
   subheadline:
     "Capture new-patient inquiries, recover missed calls, confirm appointments, and follow up with overdue patients and unscheduled cases using approved workflows.",
@@ -108,7 +108,7 @@ export const siteConfig = {
     },
     {
       title: "Existing reminders are respected",
-      detail: "Elevate maps what your current practice software already handles and fills specific gaps instead of duplicating every message.",
+      detail: "Fox Valley Systems maps what your current practice software already handles and fills specific gaps instead of duplicating every message.",
     },
     {
       title: "Outreach rules approved first",
@@ -124,24 +124,24 @@ export const siteConfig = {
     },
   ],
   complianceNote:
-    "Elevate supports administrative patient access, scheduling, reminders, follow-up, and practice operations. It does not diagnose, assess dental conditions, recommend or alter treatment, determine insurance coverage, give clinical advice, or replace professional judgment. Privacy, security, consent, recording, messaging, opt-out, and integration requirements are reviewed during scope; no legal or compliance guarantee is implied. Do not submit patient information in this business inquiry form.",
+    "Fox Valley Systems supports administrative patient access, scheduling, reminders, follow-up, and practice operations. It does not diagnose, assess dental conditions, recommend or alter treatment, determine insurance coverage, give clinical advice, or replace professional judgment. Privacy, security, consent, recording, messaging, opt-out, and integration requirements are reviewed during scope; no legal or compliance guarantee is implied. Do not submit patient information in this business inquiry form.",
   consentCopy:
-    "This form is for practice operations inquiries only—do not include patient information. By submitting, you agree that Elevate may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
+    "This form is for practice operations inquiries only—do not include patient information. By submitting, you agree that Fox Valley Systems may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
   chatWelcome:
-    "Hi—I’m Elevate’s AI workflow advisor for dental practices. Tell me where new-patient response, scheduling, case follow-up, or reactivation gets stuck, and I’ll help identify a practical first workflow.",
+    "Hi—I’m the Fox Valley workflow advisor for dental practices. Tell me where new-patient response, scheduling, case follow-up, or reactivation gets stuck, and I’ll help identify a practical first workflow.",
   chatSuggestions: [
     "We miss new-patient calls",
     "Cancellations leave chairs open",
     "Unscheduled treatment goes quiet",
   ],
-  metaTitle: "Elevate — AI Workflows for Dental Practices",
+  metaTitle: "Fox Valley Systems — Workflows for Dental Practices",
   metaDescription:
-    "Explore practical AI missed-call recovery, appointment, case follow-up, patient-reactivation, and dental-practice operations workflows.",
+    "Explore practical missed-call recovery, appointment, case follow-up, patient-reactivation, and dental-practice operations workflows.",
   theme: {
-    accent: "#347fff",
-    accentStrong: "#205fd9",
-    accentSoft: "rgba(52, 127, 255, 0.16)",
-    secondary: "#48d6c1",
+    accent: "#2563eb",
+    accentStrong: "#2563eb",
+    accentSoft: "rgba(37, 99, 235, 0.09)",
+    secondary: "#6b7280"
   },
 } as const;
 
@@ -169,7 +169,7 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     id: "ai-calling",
-    name: "Dental AI Call Coverage",
+    name: "Practice Call Coverage",
     setup: 4495,
     timeline: "1–2 weeks",
     summary: "Approved inbound or outbound administrative calls with a clear route to the front desk.",
@@ -292,7 +292,7 @@ export const workflows: WorkflowItem[] = [
   },
   {
     id: "dental-ai-receptionist",
-    name: "Dental AI Receptionist",
+    name: "Practice Call Answering",
     description: "Handles approved administrative calls, captures appointment requests, and transfers clinical or uncertain questions to staff.",
     categories: ["Popular", "New Patients", "Operations"],
     icon: "headset",

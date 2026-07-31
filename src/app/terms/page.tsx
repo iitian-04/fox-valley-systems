@@ -17,7 +17,7 @@ export default function TermsPage() {
     <LegalPage
       eyebrow="Legal"
       title="Terms of Service"
-      summary="These Terms govern this website, its workflow-planning tools, and the Elevate AI advisor. A separately signed service agreement or statement of work governs any paid implementation services."
+      summary="These Terms govern this website, its workflow-planning tools, and the Fox Valley advisor. A separately signed service agreement or statement of work governs any paid implementation services."
     >
       <section>
         <h2>1. Acceptance and eligibility</h2>
@@ -55,7 +55,7 @@ export default function TermsPage() {
           may be limited, changed, withdrawn, or subject to additional terms.
         </p>
         <p>
-          Elevate does not guarantee revenue, savings, leads, bookings,
+          Fox Valley Systems does not guarantee revenue, savings, leads, bookings,
           conversion rates, uptime, response times, business outcomes, clinical
           outcomes, legal results, or regulatory compliance.
         </p>
@@ -70,7 +70,7 @@ export default function TermsPage() {
           relying on or implementing them.
         </p>
         <p>
-          Elevate is not a law firm, medical provider, financial adviser,
+          Fox Valley Systems is not a law firm, medical provider, financial adviser,
           emergency service, licensed trade contractor, or compliance
           authority. Nothing on this website is legal, medical, clinical,
           safety, tax, financial, or other professional advice. Using the
@@ -119,7 +119,7 @@ export default function TermsPage() {
         </p>
         <p>
           The public website and AI chat are not HIPAA-compliant intake
-          channels. Elevate does not act as a HIPAA business associate through
+          channels. Fox Valley Systems does not act as a HIPAA business associate through
           this website. Any handling of protected health information requires
           advance written approval, a signed business associate agreement when
           legally required, and a separately approved technical scope.
@@ -160,7 +160,7 @@ export default function TermsPage() {
         <p>
           Workflows may depend on third-party software, AI models, hosting,
           telecommunications, messaging, advertising, CRM, scheduling, payment,
-          or other providers. Elevate does not control and is not responsible
+          or other providers. Fox Valley Systems does not control and is not responsible
           for third-party terms, pricing, policies, availability, security,
           changes, suspensions, data practices, or performance. Third-party
           charges are your responsibility unless a signed agreement says
@@ -178,7 +178,7 @@ export default function TermsPage() {
           intended business-inquiry purpose.
         </p>
         <p>
-          If you provide suggestions or feedback, you grant Elevate a
+          If you provide suggestions or feedback, you grant Fox Valley Systems a
           worldwide, perpetual, irrevocable, royalty-free right to use it
           without restriction or compensation, provided we do not publicly
           identify you without permission.
@@ -199,7 +199,7 @@ export default function TermsPage() {
         <h2>11. Disclaimer of warranties</h2>
         <p>
           To the fullest extent permitted by law, the website, AI advisor, and
-          all website content are provided “as is” and “as available.” Elevate
+          all website content are provided “as is” and “as available.” Fox Valley Systems
           disclaims all express, implied, and statutory warranties, including
           merchantability, fitness for a particular purpose, title,
           non-infringement, accuracy, availability, security, and that the
@@ -210,7 +210,7 @@ export default function TermsPage() {
       <section>
         <h2>12. Limitation of liability</h2>
         <p>
-          To the fullest extent permitted by law, Elevate and its owners,
+          To the fullest extent permitted by law, Fox Valley Systems and its owners,
           personnel, contractors, and affiliates will not be liable for
           indirect, incidental, special, exemplary, punitive, or consequential
           damages, or for lost profits, revenue, business, goodwill,
@@ -231,7 +231,7 @@ export default function TermsPage() {
         <h2>13. Indemnification</h2>
         <p>
           To the fullest extent permitted by law, you will defend, indemnify,
-          and hold harmless Elevate and its owners, personnel, contractors, and
+          and hold harmless Fox Valley Systems and its owners, personnel, contractors, and
           affiliates from third-party claims, losses, liabilities, damages,
           judgments, and reasonable costs arising from your unlawful use of the
           website, your submissions or instructions, your violation of these
@@ -242,9 +242,9 @@ export default function TermsPage() {
       <section>
         <h2>14. Suspension and termination</h2>
         <p>
-          Elevate may restrict or terminate access to the website at any time
+          Fox Valley Systems may restrict or terminate access to the website at any time
           when reasonably necessary to protect the website, users, third
-          parties, or Elevate, or in response to suspected misuse or legal
+          parties, or Fox Valley Systems, or in response to suspected misuse or legal
           requirements. Provisions that by their nature should survive
           termination will remain effective.
         </p>
@@ -268,7 +268,7 @@ export default function TermsPage() {
           reasonable control. If any provision is unenforceable, it will be
           limited to the minimum extent necessary and the remaining provisions
           will continue. Failure to enforce a provision is not a waiver. You
-          may not assign these Terms without Elevate&apos;s written consent.
+          may not assign these Terms without Fox Valley Systems&apos;s written consent.
           These Terms and any applicable signed agreement are the complete
           agreement concerning their respective subject matter.
         </p>
@@ -277,7 +277,7 @@ export default function TermsPage() {
       <section>
         <h2>17. Changes and contact</h2>
         <p>
-          Elevate may update these Terms by posting a revised version and
+          Fox Valley Systems may update these Terms by posting a revised version and
           changing the effective date. Changes apply prospectively unless the
           law permits otherwise. Questions may be sent to{" "}
           <a href={`mailto:${LEGAL_EMAIL}`}>{LEGAL_EMAIL}</a> or mailed to{" "}

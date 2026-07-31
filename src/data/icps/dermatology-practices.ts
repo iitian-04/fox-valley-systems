@@ -65,7 +65,7 @@ export const siteConfig = {
   audiencePlural: "dermatology practices",
   segment: "Medical, cosmetic, and multi-provider dermatology practices",
   persona: "Practice administrator, owner, or patient-access leader",
-  eyebrow: "AI patient-access workflows",
+  eyebrow: "patient-access workflows",
   headline: "Route medical demand and cosmetic leads to the right next step.",
   subheadline:
     "Separate inquiry types, respond quickly, fill cancellations, and reduce repetitive call work while clinical decisions remain with your care team.",
@@ -124,22 +124,22 @@ export const siteConfig = {
   complianceNote:
     "These workflows support administrative access, routing, scheduling, and approved marketing follow-up only. They do not diagnose, assess symptoms, determine urgency, recommend treatment, or make medical or cosmetic outcome claims. Patient information, privacy, security, consent, recording, messaging, and system-access requirements are confirmed during scope review; no compliance guarantee is implied.",
   consentCopy:
-    "By submitting, you agree that Elevate may contact you about this business request. Message and data rates may apply. Reply STOP to opt out of text messages. Do not submit patient information.",
+    "By submitting, you agree that Fox Valley Systems may contact you about this business request. Message and data rates may apply. Reply STOP to opt out of text messages. Do not submit patient information.",
   chatWelcome:
-    "Hi—I’m Elevate’s AI workflow advisor for dermatology practices. Tell me where medical demand, referrals, or cosmetic leads get stuck, and I’ll help identify a practical first workflow.",
+    "Hi—I’m the Fox Valley workflow advisor for dermatology practices. Tell me where medical demand, referrals, or cosmetic leads get stuck, and I’ll help identify a practical first workflow.",
   chatSuggestions: [
     "Cosmetic leads wait too long",
     "Medical requests reach the wrong queue",
     "Cancellations leave open slots",
   ],
-  metaTitle: "Elevate — AI Workflows for Dermatology Practices",
+  metaTitle: "Fox Valley Systems — Workflows for Dermatology Practices",
   metaDescription:
-    "Explore practical AI inquiry routing, cosmetic lead response, referral intake, scheduling, waitlist, and operations workflows for dermatology practices.",
+    "Explore practical inquiry routing, cosmetic lead response, referral intake, scheduling, waitlist, and operations workflows for dermatology practices.",
   theme: {
-    accent: "#8b5cf6",
-    accentStrong: "#7040df",
-    accentSoft: "rgba(139, 92, 246, 0.16)",
-    secondary: "#45c6b8",
+    accent: "#2563eb",
+    accentStrong: "#2563eb",
+    accentSoft: "rgba(37, 99, 235, 0.09)",
+    secondary: "#6b7280"
   },
 } as const;
 
@@ -167,7 +167,7 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     id: "ai-calling",
-    name: "Dermatology AI Receptionist",
+    name: "Practice Call Answering",
     setup: 6495,
     timeline: "2–3 weeks",
     summary: "Approved administrative call flows with clinical and uncertain requests escalated.",
@@ -297,7 +297,7 @@ export const workflows: WorkflowItem[] = [
   },
   {
     id: "dermatology-ai-receptionist",
-    name: "Dermatology AI Receptionist",
+    name: "Practice Call Answering",
     description: "Handles approved administrative call paths and transfers symptom, clinical, urgent, or uncertain conversations.",
     categories: ["Popular", "Patient Access", "Medical & Cosmetic"],
     icon: "headset",

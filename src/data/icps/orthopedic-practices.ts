@@ -66,7 +66,7 @@ export const siteConfig = {
   audiencePlural: "orthopedic practices",
   segment: "Independent orthopedic and musculoskeletal groups with multiple providers or locations",
   persona: "Practice administrator or managing physician",
-  eyebrow: "AI patient-access workflows for orthopedics",
+  eyebrow: "patient-access workflows for orthopedics",
   headline: "Capture more orthopedic referrals and consultation requests without adding front-desk work.",
   subheadline:
     "Recover missed calls, respond to referrals, answer approved pre-visit questions, and keep incomplete requests moving to a human scheduler.",
@@ -132,22 +132,22 @@ export const siteConfig = {
   complianceNote:
     "Automation supports administrative patient access, referral intake, scheduling requests, and follow-up only. It does not assess symptoms, determine urgency, perform clinical triage, recommend a provider, diagnosis, procedure, or treatment, give medical advice, or replace staff judgment. Privacy, security, consent, recording, messaging, and integration requirements are confirmed during scope review; no compliance or booking guarantee is implied.",
   consentCopy:
-    "By submitting, you agree that Elevate may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
+    "By submitting, you agree that Fox Valley Systems may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
   chatWelcome:
-    "Hi—I’m Elevate’s AI workflow advisor for orthopedic practices. Tell me where referrals, calls, or consultation requests get stuck, and I’ll help identify a practical first workflow.",
+    "Hi—I’m the Fox Valley workflow advisor for orthopedic practices. Tell me where referrals, calls, or consultation requests get stuck, and I’ll help identify a practical first workflow.",
   chatSuggestions: [
     "Referrals wait too long for follow-up",
     "We miss too many patient calls",
     "Marketing leads are not scheduling",
   ],
-  metaTitle: "Elevate — AI Workflows for Orthopedic Practices",
+  metaTitle: "Fox Valley Systems — Workflows for Orthopedic Practices",
   metaDescription:
-    "Explore practical AI referral-intake, missed-call recovery, consultation-request, scheduling, follow-up, and reporting workflows for orthopedic practices.",
+    "Explore practical referral-intake, missed-call recovery, consultation-request, scheduling, follow-up, and reporting workflows for orthopedic practices.",
   theme: {
-    accent: "#3f8cff",
-    accentStrong: "#2867df",
-    accentSoft: "rgba(63, 140, 255, 0.16)",
-    secondary: "#51d2b6",
+    accent: "#2563eb",
+    accentStrong: "#2563eb",
+    accentSoft: "rgba(37, 99, 235, 0.09)",
+    secondary: "#6b7280"
   },
 } as const;
 
@@ -175,7 +175,7 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     id: "ai-calling",
-    name: "AI Call Coverage",
+    name: "Call Coverage",
     setup: 6495,
     timeline: "1–2 weeks",
     summary: "Approved inbound or outbound administrative call workflows with staff escalation.",
@@ -203,7 +203,7 @@ export const workflows: WorkflowItem[] = [
   },
   {
     id: "orthopedic-ai-receptionist",
-    name: "Orthopedic AI Receptionist",
+    name: "Practice Call Answering",
     description: "Handles approved administrative questions, captures appointment requests, and escalates clinical or complex scheduling questions to staff.",
     categories: ["Popular", "Patient Access", "Calls & Intake", "Scheduling"],
     icon: "headset",

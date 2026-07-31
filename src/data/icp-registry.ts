@@ -18,6 +18,7 @@ import * as roofingCompanies from "./icps/roofing-companies";
 import * as veterinaryClinics from "./icps/veterinary-clinics";
 import {
   defineIcpBundle,
+  foxValleyTheme,
   type IcpBundle,
   type IcpBundleSource,
   type ThemeConfig,
@@ -51,22 +52,13 @@ export type TrustedIcpSlug = IcpSlug | typeof defaultIcpSlug;
 
 const canonicalIcpSlugSet = new Set<string>(canonicalIcpSlugs);
 
-function theme(
-  primary: string,
-  accent: string,
-  dark: string,
-  background: string,
-  primaryRgb: string,
-): ThemeConfig {
-  return {
-    primary,
-    accent,
-    accentStrong: primary,
-    accentSoft: `rgba(${primaryRgb}, 0.16)`,
-    secondary: accent,
-    dark,
-    background,
-  };
+/**
+ * Every vertical resolves to the same Fox Valley theme. `theme()` is kept as a
+ * call at each site so the registry reads consistently and so a future
+ * per-vertical override has an obvious place to live.
+ */
+function theme(): ThemeConfig {
+  return { ...foxValleyTheme };
 }
 
 function source(module: IcpBundleSource): IcpBundleSource {
@@ -76,71 +68,71 @@ function source(module: IcpBundleSource): IcpBundleSource {
 const canonicalBundles: Record<IcpSlug, IcpBundle> = {
   "independent-imaging-centers": defineIcpBundle(
     source(independentImagingCenters),
-    theme("#155EEF", "#14B8A6", "#0B1F3A", "#F5F9FF", "21, 94, 239"),
+    theme(),
   ),
   "radiology-groups": defineIcpBundle(
     source(radiologyGroups),
-    theme("#4F46E5", "#22D3EE", "#161742", "#F7F7FF", "79, 70, 229"),
+    theme(),
   ),
   "orthopedic-practices": defineIcpBundle(
     source(orthopedicPractices),
-    theme("#0F6B78", "#F59E0B", "#102A2F", "#F3FAFA", "15, 107, 120"),
+    theme(),
   ),
   "dental-practices": defineIcpBundle(
     source(dentalPractices),
-    theme("#006D77", "#55C2FF", "#102A43", "#F4FBFC", "0, 109, 119"),
+    theme(),
   ),
   "med-spas": defineIcpBundle(
     source(medSpas),
-    theme("#7C3AED", "#F472B6", "#2E1065", "#FCF7FF", "124, 58, 237"),
+    theme(),
   ),
   "chiropractic-clinics": defineIcpBundle(
     source(chiropracticClinics),
-    theme("#1D4ED8", "#84CC16", "#172554", "#F7FAFF", "29, 78, 216"),
+    theme(),
   ),
   "veterinary-clinics": defineIcpBundle(
     source(veterinaryClinics),
-    theme("#047857", "#F59E0B", "#173B31", "#F4FBF7", "4, 120, 87"),
+    theme(),
   ),
   "physical-therapy-clinics": defineIcpBundle(
     source(physicalTherapyClinics),
-    theme("#0F766E", "#FB923C", "#123A3A", "#F2FBFA", "15, 118, 110"),
+    theme(),
   ),
   "dermatology-practices": defineIcpBundle(
     source(dermatologyPractices),
-    theme("#9D174D", "#A78BFA", "#3F1027", "#FFF7FA", "157, 23, 77"),
+    theme(),
   ),
   "law-firms": defineIcpBundle(
     source(lawFirms),
-    theme("#315C88", "#C49A5A", "#172331", "#F7F4EE", "49, 92, 136"),
+    theme(),
   ),
   "hvac-companies": defineIcpBundle(
     source(hvacCompanies),
-    theme("#075985", "#F97316", "#0C2D48", "#F3F9FC", "7, 89, 133"),
+    theme(),
   ),
   "plumbing-companies": defineIcpBundle(
     source(plumbingCompanies),
-    theme("#0369A1", "#06B6D4", "#082F49", "#F0F9FF", "3, 105, 161"),
+    theme(),
   ),
   "roofing-companies": defineIcpBundle(
     source(roofingCompanies),
-    theme("#9A3412", "#FBBF24", "#3B1D12", "#FFF8F3", "154, 52, 18"),
+    theme(),
   ),
   "electrical-contractors": defineIcpBundle(
     source(electricalContractors),
-    theme("#7C2D12", "#FACC15", "#271A0C", "#FFFBEF", "124, 45, 18"),
+    theme(),
   ),
   "garage-door-companies": defineIcpBundle(
     source(garageDoorCompanies),
-    theme("#B42318", "#38BDF8", "#36120F", "#FFF7F5", "180, 35, 24"),
+    theme(),
   ),
   "pest-control-companies": defineIcpBundle(
     source(pestControlCompanies),
-    theme("#3F6212", "#EAB308", "#1A2E05", "#F8FBEF", "63, 98, 18"),
+    theme(),
   ),
   "landscaping-lawn-care-companies": defineIcpBundle(
     source(landscapingLawnCareCompanies),
-    theme("#166534", "#84CC16", "#102A1B", "#F4FAF4", "22, 101, 52"),
+    theme(),
   ),
 };
 

@@ -65,7 +65,7 @@ export const siteConfig = {
   audiencePlural: "chiropractic clinics",
   segment: "Independent chiropractic clinics and growing multi-location practices",
   persona: "Clinic owner, practice manager, or operations lead",
-  eyebrow: "AI workflows for chiropractic clinics",
+  eyebrow: "workflows for chiropractic clinics",
   headline: "Respond to every new-patient inquiry and keep the schedule moving.",
   subheadline:
     "Automate repetitive follow-up around missed calls, booking, reminders, schedule gaps, and inactive patients—while clinical questions stay with your team.",
@@ -123,24 +123,24 @@ export const siteConfig = {
     },
   ],
   complianceNote:
-    "Elevate supports administrative access, scheduling, communication, and operations workflows. It does not diagnose, recommend treatment, assess symptoms, determine urgency, make care-plan decisions, or replace professional judgment. Privacy, security, consent, recording, messaging, opt-out, and integration requirements are reviewed during scope; no legal or compliance guarantee is implied. Do not submit patient information in this business inquiry form.",
+    "Fox Valley Systems supports administrative access, scheduling, communication, and operations workflows. It does not diagnose, recommend treatment, assess symptoms, determine urgency, make care-plan decisions, or replace professional judgment. Privacy, security, consent, recording, messaging, opt-out, and integration requirements are reviewed during scope; no legal or compliance guarantee is implied. Do not submit patient information in this business inquiry form.",
   consentCopy:
-    "This form is for clinic operations inquiries only—do not include patient information. By submitting, you agree that Elevate may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
+    "This form is for clinic operations inquiries only—do not include patient information. By submitting, you agree that Fox Valley Systems may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
   chatWelcome:
-    "Hi—I’m Elevate’s AI workflow advisor for chiropractic clinics. Tell me where new-patient access, scheduling, or follow-up gets stuck, and I’ll help identify a practical first workflow.",
+    "Hi—I’m the Fox Valley workflow advisor for chiropractic clinics. Tell me where new-patient access, scheduling, or follow-up gets stuck, and I’ll help identify a practical first workflow.",
   chatSuggestions: [
     "New-patient leads wait too long",
     "We miss calls during busy hours",
     "We need to fill schedule gaps",
   ],
-  metaTitle: "Elevate — AI Workflows for Chiropractic Clinics",
+  metaTitle: "Fox Valley Systems — Workflows for Chiropractic Clinics",
   metaDescription:
-    "Explore practical AI lead-response, scheduling, follow-up, reactivation, and clinic-operations workflows for chiropractic practices.",
+    "Explore practical lead-response, scheduling, follow-up, reactivation, and clinic-operations workflows for chiropractic practices.",
   theme: {
-    accent: "#2f86ff",
-    accentStrong: "#2466df",
-    accentSoft: "rgba(47, 134, 255, 0.16)",
-    secondary: "#52d5b2",
+    accent: "#2563eb",
+    accentStrong: "#2563eb",
+    accentSoft: "rgba(37, 99, 235, 0.09)",
+    secondary: "#6b7280"
   },
 } as const;
 
@@ -168,7 +168,7 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     id: "ai-calling",
-    name: "AI Call Coverage",
+    name: "Call Coverage",
     setup: 3995,
     timeline: "1–2 weeks",
     summary: "Approved inbound or outbound administrative call workflows with human escalation.",
@@ -291,7 +291,7 @@ export const workflows: WorkflowItem[] = [
   },
   {
     id: "chiropractic-ai-receptionist",
-    name: "Chiropractic AI Receptionist",
+    name: "Clinic Call Answering",
     description: "Handles approved administrative calls, captures new-patient requests, and transfers clinical or uncertain questions to staff.",
     categories: ["Popular", "New Patient Access", "Operations"],
     icon: "headset",

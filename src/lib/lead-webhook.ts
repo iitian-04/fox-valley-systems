@@ -34,7 +34,7 @@ export type LeadPricingPayload = {
 };
 
 export type LeadWebhookPayload = {
-  source: "elevate-chat" | "elevate-plan" | "elevate-test";
+  source: "fox-valley-chat" | "fox-valley-plan" | "fox-valley-test";
   isTest: boolean;
   vertical: string;
   icp: {

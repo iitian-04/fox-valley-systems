@@ -1,5 +1,6 @@
 import {
   defineIcpBundle,
+  foxValleyTheme,
   type IcpBundle,
   type IcpBundleSource,
   type PricingTier,
@@ -45,7 +46,7 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     id: "ai-calling",
-    name: "24/7 AI Call Coverage",
+    name: "24/7 Call Coverage",
     setup: 4995,
     timeline: "2–3 weeks",
     summary:
@@ -137,7 +138,7 @@ export const workflows: WorkflowItem[] = [
   },
   {
     id: "home-service-ai-receptionist",
-    name: "24/7 Home Service AI Receptionist",
+    name: "24/7 Call Answering",
     description:
       "Answers approved administrative questions, captures job-ready details, and transfers technical, safety, pricing, or uncertain conversations.",
     outcome: "More calls are answered with complete, staff-ready request details.",
@@ -265,7 +266,7 @@ const source = {
       "Residential home service businesses with active inbound demand and field teams",
     persona:
       "Owner, general manager, service manager, operations lead, or dispatcher",
-    eyebrow: "AI workflows for home service companies",
+    eyebrow: "workflows for home service companies",
     headline:
       "Turn more calls and web leads into booked work—without adding office overhead.",
     subheadline:
@@ -345,34 +346,29 @@ const source = {
     complianceNote:
       "Automation supports approved administrative intake, booking, routing, communication, and follow-up. It does not diagnose technical problems, provide safety instructions, promise response times, give variable final quotes, or guarantee revenue. Calling, recording, messaging, consent, privacy, opt-out, licensing, and local business requirements are confirmed during scope review.",
     consentCopy:
-      "By submitting, you agree that Elevate may contact you about this business request. Message and data rates may apply. Reply STOP to opt out of text messages. Do not submit customer information.",
+      "By submitting, you agree that Fox Valley Systems may contact you about this business request. Message and data rates may apply. Reply STOP to opt out of text messages. Do not submit customer information.",
     chatWelcome:
-      "Hi—I’m Elevate’s AI workflow advisor for home service companies. Tell me where calls, web leads, booking, dispatch, estimates, or customer follow-up get stuck, and I’ll help identify a practical first workflow.",
+      "Hi—I’m the Fox Valley workflow advisor for home service companies. Tell me where calls, web leads, booking, dispatch, estimates, or customer follow-up get stuck, and I’ll help identify a practical first workflow.",
     chatSuggestions: [
       "We miss too many calls",
       "Open estimates go cold",
       "The office is overloaded",
     ],
-    metaTitle: "Elevate — AI Workflows for Home Service Companies",
+    metaTitle: "Fox Valley Systems — Workflows for Home Service Companies",
     metaDescription:
-      "Explore practical AI missed-call, web-lead, booking, dispatch, estimate follow-up, customer retention, and operations workflows for home service companies.",
+      "Explore practical missed-call, web-lead, booking, dispatch, estimate follow-up, customer retention, and operations workflows for home service companies.",
     theme: {
-      accent: "#0B5CCC",
-      accentStrong: "#0B5CCC",
-      accentSoft: "rgba(11, 92, 204, 0.16)",
-      secondary: "#F59E0B",
-    },
+    accent: "#2563eb",
+    accentStrong: "#2563eb",
+    accentSoft: "rgba(37, 99, 235, 0.09)",
+    secondary: "#6b7280"
+  },
   },
   pricingTiers,
   workflows,
 } satisfies IcpBundleSource;
 
-export const homeServicesBundle: IcpBundle = defineIcpBundle(source, {
-  primary: "#0B5CCC",
-  accent: "#F59E0B",
-  accentStrong: "#0B5CCC",
-  accentSoft: "rgba(11, 92, 204, 0.16)",
-  secondary: "#F59E0B",
-  dark: "#0B1F33",
-  background: "#F5F9FC",
-});
+export const homeServicesBundle: IcpBundle = defineIcpBundle(
+  source,
+  foxValleyTheme,
+);

@@ -22,13 +22,14 @@ import {
   MessagesSquare,
   MonitorPlay,
   PhoneMissed,
+  Plug,
   Plus,
   RefreshCw,
   Route,
   Search,
   Send,
   ShieldCheck,
-  Sparkles,
+  TrendingUp,
   UsersRound,
   Workflow,
   X,
@@ -39,7 +40,6 @@ import {
   type CSSProperties,
   type FormEvent,
   type MouseEvent,
-  useCallback,
   useEffect,
   useMemo,
   useRef,
@@ -54,14 +54,14 @@ import {
 } from "@/data/icp-types";
 import { getChatAdvisorImage, getNicheHeroImage } from "@/data/icp-images";
 import { getWorkExample } from "@/data/work-examples";
-import {
-  createLocalPromotion,
-  formatUsd,
-  getLivePriceUsd,
-  PROMO_QUERY_PARAM,
-  type PromotionInput,
-} from "@/lib/promo";
+import { formatUsd } from "@/lib/promo";
 import { LEGAL_VERSION } from "@/lib/legal";
+import {
+  BRAND_NAME,
+  BRAND_SHORT,
+  FoxValleyLockup,
+  FoxValleyMark,
+} from "@/components/brand";
 
 type FormData = {
   name: string;
@@ -196,7 +196,7 @@ const selectedLabel = (count: number) =>
   count === 0 ? "No workflows selected" : `${count} workflow${count === 1 ? "" : "s"} selected`;
 
 function Wordmark({ compact = false }: { compact?: boolean }) {
-  return <span className={`elevate-wordmark${compact ? " compact" : ""}`}>Elevate</span>;
+  return <FoxValleyLockup compact={compact} />;
 }
 
 function MobileSplash({
@@ -210,7 +210,7 @@ function MobileSplash({
     <div
       className={`mobile-splash${leaving ? " leaving" : ""}`}
       role="status"
-      aria-label={`Opening Elevate for ${siteConfig.industry}`}
+      aria-label={`Opening ${BRAND_NAME} for ${siteConfig.industry}`}
     >
       <div className="splash-glow" />
       <Wordmark />
@@ -231,75 +231,6 @@ function MobileSplash({
       </div>
       <div className="splash-loader" aria-hidden="true"><span /></div>
     </div>
-  );
-}
-
-function PromoBanner({
-  promotion,
-  regularPrice,
-  onExpire,
-}: {
-  promotion: PromotionInput;
-  regularPrice: number;
-  onExpire: () => void;
-}) {
-  const [remainingMs, setRemainingMs] = useState(() =>
-    Math.max(0, Date.parse(promotion.expiresAt) - Date.now()),
-  );
-  const expiredRef = useRef(false);
-
-  useEffect(() => {
-    const updateRemaining = () => {
-      const nextRemaining = Math.max(0, Date.parse(promotion.expiresAt) - Date.now());
-      setRemainingMs(nextRemaining);
-      if (nextRemaining === 0 && !expiredRef.current) {
-        expiredRef.current = true;
-        onExpire();
-      }
-    };
-    const updateWhenVisible = () => {
-      if (document.visibilityState === "visible") updateRemaining();
-    };
-    updateRemaining();
-    const timer = window.setInterval(updateRemaining, 1000);
-    window.addEventListener("focus", updateRemaining);
-    document.addEventListener("visibilitychange", updateWhenVisible);
-    return () => {
-      window.clearInterval(timer);
-      window.removeEventListener("focus", updateRemaining);
-      document.removeEventListener("visibilitychange", updateWhenVisible);
-    };
-  }, [onExpire, promotion.expiresAt]);
-
-  const totalSeconds = Math.max(0, Math.ceil(remainingMs / 1000));
-  const hours = Math.floor(totalSeconds / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
-  const pad = (value: number) => value.toString().padStart(2, "0");
-  const livePrice = getLivePriceUsd(regularPrice, true);
-
-  return (
-    <aside className="promo-banner" aria-label="50 percent promotional pricing">
-      <div className="promo-banner-copy">
-        <span><Sparkles size={16} />50% off</span>
-        <div>
-          <strong>Your link price is reserved until midnight today.</strong>
-          <small>Every workflow is half price · starting at {formatUsd(livePrice)} instead of {formatUsd(regularPrice)}</small>
-        </div>
-      </div>
-      <time
-        className="promo-countdown"
-        dateTime={promotion.expiresAt}
-        role="timer"
-        aria-label="Promotional pricing ends at your local midnight"
-      >
-        <span><strong>{pad(hours)}</strong><small>hrs</small></span>
-        <i>:</i>
-        <span><strong>{pad(minutes)}</strong><small>min</small></span>
-        <i>:</i>
-        <span><strong>{pad(seconds)}</strong><small>sec</small></span>
-      </time>
-    </aside>
   );
 }
 
@@ -361,19 +292,16 @@ function WorkflowCard({
   selected,
   onToggle,
   delay,
-  promoActive,
   bundle,
 }: {
   workflow: WorkflowItem;
   selected: boolean;
   onToggle: () => void;
   delay: number;
-  promoActive: boolean;
   bundle: IcpBundle;
 }) {
   const Icon = iconMap[workflow.icon];
   const pricing = getWorkflowPricing(bundle, workflow);
-  const livePrice = getLivePriceUsd(pricing.setup, promoActive);
 
   return (
     <article
@@ -395,17 +323,27 @@ function WorkflowCard({
           </span>
           <span className="automation-description">{workflow.description}</span>
           <span className="workflow-card-notes">
-            <span className="workflow-card-note workflow-outcome"><strong>Outcome:</strong> {workflow.outcome ?? workflowOutcomeByTier[workflow.tier]}</span>
-            {workflow.requirement && <span className="workflow-card-note requirement"><strong>Needs:</strong> {workflow.requirement}</span>}
+            <span className="workflow-card-note workflow-outcome">
+              <TrendingUp size={13} aria-hidden="true" />
+              <span><strong>Outcome</strong>{workflow.outcome ?? workflowOutcomeByTier[workflow.tier]}</span>
+            </span>
+            {workflow.requirement && (
+              <span className="workflow-card-note requirement">
+                <Plug size={13} aria-hidden="true" />
+                <span><strong>Needs</strong>{workflow.requirement}</span>
+              </span>
+            )}
           </span>
         </span>
-        <span className="select-control">{selected ? <Check size={16} /> : <Plus size={16} />}</span>
+        <span className="select-control">
+          {selected ? <Check size={15} /> : <Plus size={15} />}
+          <em>{selected ? "Added" : "Add"}</em>
+        </span>
       </button>
       <div className="card-meta">
-        <span className={`card-price-primary${promoActive ? " promo-active" : ""}`}>
-          <small>{promoActive ? "50% promo from" : "One-time from"}</small>
-          <strong>{formatUsd(livePrice)}</strong>
-          {promoActive && <del>{formatUsd(pricing.setup)}</del>}
+        <span className="card-price-primary">
+          <small>One-time from</small>
+          <strong>{formatUsd(pricing.setup)}</strong>
         </span>
         <span className="card-price-timeline"><strong>{pricing.timeline}</strong><small>{pricing.usageNote ? "+ provider usage" : "Typical launch"}</small></span>
       </div>
@@ -413,7 +351,17 @@ function WorkflowCard({
   );
 }
 
-export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
+/**
+ * Dark is the default treatment. `themeMode="light"` opts a route into the
+ * light token set; both read the same token names, so nothing else changes.
+ */
+export function IcpLanding({
+  bundle,
+  themeMode = "dark",
+}: {
+  bundle: IcpBundle;
+  themeMode?: "dark" | "light";
+}) {
   const { categoryTabs, pricingTiers, siteConfig, workflows } = bundle;
   const chatAdvisorImage = getChatAdvisorImage(siteConfig.slug);
   const [step, setStep] = useState(1);
@@ -437,8 +385,6 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
   const [legalConsent, setLegalConsent] = useState(true);
   const [showSplash, setShowSplash] = useState(true);
   const [splashLeaving, setSplashLeaving] = useState(false);
-  const [promotion, setPromotion] = useState<PromotionInput | null>(null);
-  const [promoExpired, setPromoExpired] = useState(false);
   const [webhookTestStatus, setWebhookTestStatus] =
     useState<WebhookTestStatus | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -460,22 +406,17 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
     },
   ];
 
+  /**
+   * Surface tokens now live in `globals.css` so every route renders the same
+   * Fox Valley palette. Only the accent and the light-surface value are echoed
+   * here, which keeps the theme contract intact without letting a per-vertical
+   * config quietly repaint the app.
+   */
   const themeStyle = {
+    "--brand": siteConfig.theme.primary,
     "--blue": siteConfig.theme.primary,
-    "--blue-2": siteConfig.theme.primary,
-    "--cyan": siteConfig.theme.accent,
-    "--green": siteConfig.theme.accent,
-    "--yellow": siteConfig.theme.accent,
     "--accent-strong": siteConfig.theme.accentStrong,
     "--accent-soft": siteConfig.theme.accentSoft,
-    "--canvas": siteConfig.theme.dark,
-    "--canvas-2": `color-mix(in srgb, ${siteConfig.theme.dark} 86%, ${siteConfig.theme.primary})`,
-    "--shell": `color-mix(in srgb, ${siteConfig.theme.dark} 80%, #263247)`,
-    "--sidebar": `color-mix(in srgb, ${siteConfig.theme.dark} 84%, #202c40)`,
-    "--panel": `color-mix(in srgb, ${siteConfig.theme.dark} 72%, #33425a)`,
-    "--panel-2": `color-mix(in srgb, ${siteConfig.theme.dark} 67%, #3a4b66)`,
-    "--card": `color-mix(in srgb, ${siteConfig.theme.dark} 62%, #40526e)`,
-    "--card-hover": `color-mix(in srgb, ${siteConfig.theme.dark} 54%, #4c607f)`,
     "--theme-background": siteConfig.theme.background,
   } as CSSProperties;
 
@@ -532,7 +473,6 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const utmPromo = params.get(PROMO_QUERY_PARAM) ?? "";
     setAttribution({
       landingPage: window.location.href,
       referrer: document.referrer,
@@ -541,12 +481,11 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
       utmCampaign: params.get("utm_campaign") ?? "",
       utmContent: params.get("utm_content") ?? "",
       utmTerm: params.get("utm_term") ?? "",
-      utmPromo,
+      utmPromo: params.get("utm_promo") ?? "",
       utmIcp: params.get("utm_icp") ?? "",
       gclid: params.get("gclid") ?? "",
       fbclid: params.get("fbclid") ?? "",
     });
-    setPromotion(createLocalPromotion(utmPromo));
   }, []);
 
   useEffect(() => {
@@ -599,11 +538,6 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
     if (!legalConsent) return;
     setStep(3);
   };
-
-  const expirePromotion = useCallback(() => {
-    setPromotion(null);
-    setPromoExpired(true);
-  }, []);
 
   const sendLogoWebhookTest = async (clickTimes: number[]) => {
     const clickIntervalsMs = clickTimes
@@ -677,7 +611,7 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
         body: JSON.stringify({
           ...form,
           attribution,
-          promotion,
+          promotion: null,
           legalConsent,
           legalVersion: LEGAL_VERSION,
           automations: selectedWorkflows.map(({ id }) => ({ id })),
@@ -709,7 +643,7 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
           messages: nextMessages.map(({ role, content: messageContent }) => ({ role, content: messageContent })),
           leadCaptured: chatLeadCaptured,
           attribution,
-          promotion,
+          promotion: null,
         }),
       });
       const data = await response.json() as ChatResponse;
@@ -738,20 +672,21 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
   if (!quickStartTier) {
     throw new Error(`Missing quick-start pricing for ${siteConfig.slug}`);
   }
-  const promoActive = promotion !== null;
-  const quickStartLivePrice = getLivePriceUsd(quickStartTier.setup, promoActive);
   const workExample = getWorkExample(siteConfig.slug);
 
   return (
-    <main className="screen" style={themeStyle}>
+    <main
+      className={`screen${themeMode === "light" ? " theme-light" : ""}`}
+      style={themeStyle}
+    >
       {showSplash && <MobileSplash leaving={splashLeaving} siteConfig={siteConfig} />}
       <div className="ambient ambient-one" />
       <div className="ambient ambient-two" />
 
       <header className="site-header">
-        <button className="site-header-brand" type="button" onClick={handleBrandClick} aria-label="Elevate home">
+        <button className="site-header-brand" type="button" onClick={handleBrandClick} aria-label={`${BRAND_NAME} home`}>
           <Wordmark compact />
-          <span><strong>{siteConfig.industry}</strong><small>Done-for-you AI automation</small></span>
+          <span><strong>{siteConfig.industry}</strong><small>Workflow systems for service businesses</small></span>
         </button>
 
         <nav className="site-header-nav" aria-label="Primary navigation">
@@ -780,11 +715,7 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
             <span className="workflow-library-industries" aria-hidden="true"><i>01</i><i>02</i><i>03</i></span>
             <span className="workflow-library-trigger-copy">
               <strong>Start with a practical first win</strong>
-              <small>
-                {promoActive
-                  ? `50% promo from ${formatUsd(quickStartLivePrice)} · normally ${formatUsd(quickStartTier.setup)}`
-                  : `One-time from ${formatUsd(quickStartTier.setup)} · no forced software replacement`}
-              </small>
+              <small>{`One-time from ${formatUsd(quickStartTier.setup)} · no forced software replacement`}</small>
             </span>
             <ChevronRight size={16} />
           </button>
@@ -796,14 +727,6 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
         </button>
       </header>
 
-      {promotion && (
-        <PromoBanner
-          promotion={promotion}
-          regularPrice={quickStartTier.setup}
-          onExpire={expirePromotion}
-        />
-      )}
-      {promoExpired && <p className="sr-only" role="status">The promotional window ended. Regular starting prices are now shown.</p>}
       {webhookTestStatus && (
         <div
           className={`webhook-test-toast ${webhookTestStatus.state}`}
@@ -841,7 +764,7 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
         </div>
       )}
 
-      <section className="app-shell" aria-label={`Elevate workflow planner for ${siteConfig.industry}`}>
+      <section className="app-shell" aria-label={`${BRAND_NAME} workflow planner for ${siteConfig.industry}`}>
         <ProfilePanel siteConfig={siteConfig} onOpenStandards={() => setStandardsOpen(true)} />
 
         <div className="workspace">
@@ -926,10 +849,9 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
                     <small>One-time build · configuration, testing, and handoff included.</small>
                   </div>
                   <div className="pricing-strip-numbers">
-                    <span className={promoActive ? "promo-active" : ""}>
-                      <small>{promoActive ? "50% promo from" : "One-time from"}</small>
-                      <strong>{formatUsd(quickStartLivePrice)}</strong>
-                      {promoActive && <del>{formatUsd(quickStartTier.setup)}</del>}
+                    <span>
+                      <small>One-time from</small>
+                      <strong>{formatUsd(quickStartTier.setup)}</strong>
                     </span>
                     <i>·</i>
                     <span><small>Typical launch</small><strong>{quickStartTier.timeline}</strong></span>
@@ -946,7 +868,6 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
                         selected={selectedIds.includes(workflow.id)}
                         onToggle={() => toggleWorkflow(workflow.id)}
                         delay={index}
-                        promoActive={promoActive}
                         bundle={bundle}
                       />
                     ))}
@@ -993,7 +914,7 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
                     <div>
                       <label htmlFor="legal-consent">
                         I agree to the Terms, acknowledge the Privacy Policy, and
-                        allow Elevate to contact me about this request.
+                        allow {BRAND_SHORT} to contact me about this request.
                       </label>
                       <p id="legal-consent-detail">
                         <Link href="/terms" target="_blank" rel="noopener noreferrer">Terms of Service</Link>
@@ -1011,7 +932,7 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
             {step === 3 && (
               <section className="step-panel review-panel">
                 <div className="review-hero">
-                  <span><Sparkles size={14} /> Elevate workflow plan</span>
+                  <span><ClipboardList size={14} /> {BRAND_SHORT} workflow plan</span>
                   <h3>{form.organization || "Your organization"}, configured around the way you already work.</h3>
                   <p>We’ll review workflow logic, system access, human handoffs, and applicable safeguards before recommending scope.</p>
                 </div>
@@ -1023,17 +944,15 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
                       {selectedWorkflows.map((workflow) => {
                         const Icon = iconMap[workflow.icon];
                         const pricing = getWorkflowPricing(bundle, workflow);
-                        const livePrice = getLivePriceUsd(pricing.setup, promoActive);
                         return (
                           <div key={workflow.id}>
                             <span><Icon size={16} /></span>
                             <div>
                               <strong>{workflow.name}</strong>
                               <small>{workflow.description}</small>
-                              <em className={promoActive ? "promo-active" : ""}>
-                                {promoActive ? "50% promo from " : "One-time from "}
-                                <strong>{formatUsd(livePrice)}</strong>
-                                {promoActive && <> <del>{formatUsd(pricing.setup)}</del></>}
+                              <em>
+                                One-time from{" "}
+                                <strong>{formatUsd(pricing.setup)}</strong>
                                 {" · "}typically {pricing.timeline}{pricing.usageNote ? " · provider usage separate" : ""}
                               </em>
                             </div>
@@ -1070,7 +989,7 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
                 <div className="success-orbit"><span><Check size={26} /></span></div>
                 <span className="success-kicker">Plan request received</span>
                 <h2>Your workflow plan is ready for review.</h2>
-                <p>Elevate will review the {selectedWorkflows.length} selected workflow{selectedWorkflows.length === 1 ? "" : "s"} and follow up with the smallest sensible next step.</p>
+                <p>{BRAND_SHORT} will review the {selectedWorkflows.length} selected workflow{selectedWorkflows.length === 1 ? "" : "s"} and follow up with the smallest sensible next step.</p>
                 <div className="success-summary">
                   <div><span>Organization</span><strong>{form.organization}</strong></div>
                   <div><span>Workflows</span><strong>{selectedWorkflows.length}</strong></div>
@@ -1177,14 +1096,14 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
           <section id="build-standards-dialog" className="client-reviews-sheet" role="dialog" aria-modal="true" aria-labelledby="build-standards-title" aria-describedby="build-standards-description">
             <header className="client-reviews-header">
               <div>
-                <span>How Elevate delivers</span>
+                <span>How we deliver</span>
                 <h2 id="build-standards-title">One useful workflow—clearly scoped, tested, and handed off.</h2>
                 <p id="build-standards-description">Start with the bottleneck you can see. Keep your team in control. Expand only when the first workflow earns it.</p>
               </div>
               <button type="button" autoFocus onClick={() => setStandardsOpen(false)} aria-label="Close build standards"><X size={18} /></button>
             </header>
 
-            <ol className="build-process-list" aria-label="Elevate delivery stages">
+            <ol className="build-process-list" aria-label="Delivery stages">
               {buildProcessStages.map((stage, index) => (
                 <li className="build-process-card" key={stage.title}>
                   <div className="build-process-stage" aria-hidden="true">
@@ -1234,25 +1153,23 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
           <section className="pricing-modal">
             <header>
               <div>
-                <span>{promoActive ? "50% link promotion active" : "One-time starting prices"}</span>
-                <h2 id="pricing-title">{promoActive ? "Half-price workflow starts, reserved until midnight today." : "Enter through one clear workflow. Expand only when it earns the next step."}</h2>
+                <span>One-time starting prices</span>
+                <h2 id="pricing-title">Enter through one clear workflow. Expand only when it earns the next step.</h2>
                 <p>Starting prices include discovery, implementation, testing, and launch handoff for the defined workflow.</p>
               </div>
               <button type="button" onClick={() => setPricingOpen(false)} aria-label="Close pricing guide"><X size={18} /></button>
             </header>
             <div className="pricing-tier-grid">
               {pricingTiers.map((tier) => {
-                const livePrice = getLivePriceUsd(tier.setup, promoActive);
                 return (
                   <article key={tier.id} className={tier.id === "quick-start" ? "featured" : ""}>
-                    <span>{promoActive ? "50% off today" : tier.id === "quick-start" ? "Best first step" : tier.name}</span>
+                    <span>{tier.id === "quick-start" ? "Best first step" : tier.name}</span>
                     <h3>{tier.name}</h3>
-                    <div className={`tier-price${promoActive ? " promo-active" : ""}`}>
+                    <div className="tier-price">
                       <span className="tier-price-values">
-                        <strong>{formatUsd(livePrice)}</strong>
-                        {promoActive && <del>{formatUsd(tier.setup)}</del>}
+                        <strong>{formatUsd(tier.setup)}</strong>
                       </span>
-                      <small>{promoActive ? "promo · one-time from" : "one-time from"}</small>
+                      <small>one-time from</small>
                     </div>
                     <div><strong>{tier.timeline}</strong><small>typical launch</small></div>
                     <p>{tier.summary}</p>
@@ -1267,7 +1184,7 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
       )}
 
       {chatOpen && (
-        <div className="chat-overlay" role="dialog" aria-modal="true" aria-label="Elevate AI workflow advisor" onMouseDown={(event) => { if (event.target === event.currentTarget) setChatOpen(false); }}>
+        <div className="chat-overlay" role="dialog" aria-modal="true" aria-label={`${BRAND_SHORT} workflow advisor`} onMouseDown={(event) => { if (event.target === event.currentTarget) setChatOpen(false); }}>
           <div className="chat-shell">
             <aside className="chat-visual">
               <button type="button" className="chat-close-mobile" onClick={() => setChatOpen(false)} aria-label="Close chat"><X size={18} /></button>
@@ -1279,11 +1196,11 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
               <div className="chat-principles"><span><Check size={12} />No generic package</span><span><Check size={12} />Human handoff</span><span><Check size={12} />Scope first</span></div>
             </aside>
             <section className="chat-conversation">
-              <header><div><span>Elevate AI</span><strong>Workflow advisor</strong></div><button type="button" onClick={() => setChatOpen(false)} aria-label="Close chat"><X size={18} /></button></header>
+              <header><div><span>{BRAND_SHORT}</span><strong>Workflow advisor</strong></div><button type="button" onClick={() => setChatOpen(false)} aria-label="Close chat"><X size={18} /></button></header>
               <div className="chat-messages">
                 {chatMessages.map((message) => (
                   <div key={message.id} className={`chat-message ${message.role}`}>
-                    {message.role === "assistant" && <span className="message-avatar"><Sparkles size={13} /></span>}
+                    {message.role === "assistant" && <span className="message-avatar"><FoxValleyMark className="message-avatar-mark" /></span>}
                     <p>{message.content}</p>
                   </div>
                 ))}
@@ -1292,14 +1209,14 @@ export function IcpLanding({ bundle }: { bundle: IcpBundle }) {
                     {siteConfig.chatSuggestions.map((suggestion) => <button type="button" key={suggestion} onClick={() => sendChat(suggestion)}>{suggestion}<ChevronRight size={14} /></button>)}
                   </div>
                 )}
-                {chatSending && <div className="chat-message assistant"><span className="message-avatar"><Sparkles size={13} /></span><div className="typing"><i /><i /><i /></div></div>}
+                {chatSending && <div className="chat-message assistant"><span className="message-avatar"><FoxValleyMark className="message-avatar-mark" /></span><div className="typing"><i /><i /><i /></div></div>}
                 <div ref={chatEndRef} />
               </div>
               <form className="chat-composer" onSubmit={(event) => { event.preventDefault(); sendChat(); }}>
                 <input value={chatInput} onChange={(event) => setChatInput(event.target.value)} placeholder="Describe where work gets stuck…" disabled={chatSending} />
                 <button type="submit" disabled={!chatInput.trim() || chatSending} aria-label="Send message"><Send size={17} /></button>
               </form>
-              <p className="chat-disclaimer">AI responses can be imperfect. Elevate confirms scope, feasibility, safeguards, and human handoffs before launch.</p>
+              <p className="chat-disclaimer">Answers here are a starting point, not a quote. {BRAND_SHORT} confirms scope, feasibility, safeguards, and human handoffs before any build.</p>
             </section>
           </div>
         </div>

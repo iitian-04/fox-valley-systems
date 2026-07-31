@@ -65,7 +65,7 @@ export const siteConfig = {
   audiencePlural: "radiology groups",
   segment: "Physician-owned radiology groups and teleradiology practices",
   persona: "Managing partner, practice administrator, or radiology executive",
-  eyebrow: "AI workflows for radiology group operations",
+  eyebrow: "workflows for radiology group operations",
   headline: "Protect referral relationships without adding another administrative queue.",
   subheadline:
     "Capture referral and coverage inquiries, route each one to the right owner, and send approved status updates—so radiologists can stay focused on reading studies.",
@@ -131,22 +131,22 @@ export const siteConfig = {
   complianceNote:
     "Automation supports administrative communication, intake, routing, and reporting only. It does not read or interpret studies, make clinical decisions, provide medical advice, perform clinical triage, or replace radiologists. Privacy, security, consent, recording, messaging, contract, and integration requirements are confirmed during scope review; no compliance guarantee is implied.",
   consentCopy:
-    "By submitting, you agree that Elevate may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
+    "By submitting, you agree that Fox Valley Systems may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
   chatWelcome:
-    "Hi—I’m Elevate’s AI workflow advisor for radiology groups. Tell me where referral, coverage, or administrative communication gets stuck, and I’ll help identify a practical first workflow.",
+    "Hi—I’m the Fox Valley workflow advisor for radiology groups. Tell me where referral, coverage, or administrative communication gets stuck, and I’ll help identify a practical first workflow.",
   chatSuggestions: [
     "Referrers wait too long for updates",
     "Coverage requests route slowly",
     "We cannot see missed inquiries",
   ],
-  metaTitle: "Elevate — AI Workflows for Radiology Groups",
+  metaTitle: "Fox Valley Systems — Workflows for Radiology Groups",
   metaDescription:
-    "Explore practical AI referral communication, coverage-intake, call-routing, follow-up, and reporting workflows for physician-owned radiology groups and teleradiology practices.",
+    "Explore practical referral communication, coverage-intake, call-routing, follow-up, and reporting workflows for physician-owned radiology groups and teleradiology practices.",
   theme: {
-    accent: "#6f7cff",
-    accentStrong: "#4f5bd5",
-    accentSoft: "rgba(111, 124, 255, 0.16)",
-    secondary: "#4bd5c0",
+    accent: "#2563eb",
+    accentStrong: "#2563eb",
+    accentSoft: "rgba(37, 99, 235, 0.09)",
+    secondary: "#6b7280"
   },
 } as const;
 
@@ -174,7 +174,7 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     id: "ai-calling",
-    name: "AI Call Coverage",
+    name: "Call Coverage",
     setup: 8995,
     timeline: "1–2 weeks",
     summary: "Approved inbound or outbound administrative call workflows with staff escalation.",

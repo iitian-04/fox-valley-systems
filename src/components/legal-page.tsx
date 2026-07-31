@@ -7,6 +7,7 @@ import {
   LEGAL_EMAIL,
   LEGAL_ENTITY,
 } from "@/lib/legal";
+import { FoxValleyMark } from "@/components/brand";
 
 type LegalPageProps = {
   eyebrow: string;
@@ -24,13 +25,14 @@ export function LegalPage({
   return (
     <main className="legal-screen">
       <header className="legal-header">
-        <Link className="legal-brand" href="/" aria-label="Return to Elevate">
+        <Link className="legal-brand" href="/" aria-label="Return to Fox Valley Systems">
+          <FoxValleyMark />
           {LEGAL_BRAND}
         </Link>
         <nav aria-label="Legal navigation">
           <Link href="/terms">Terms</Link>
           <Link href="/privacy">Privacy</Link>
-          <Link className="legal-back" href="/">Back to Elevate</Link>
+          <Link className="legal-back" href="/">Back to Fox Valley Systems</Link>
         </nav>
       </header>
 

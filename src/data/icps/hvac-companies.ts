@@ -66,7 +66,7 @@ export const siteConfig = {
   audiencePlural: "HVAC companies",
   segment: "Residential and light-commercial HVAC service companies",
   persona: "Owner, general manager, service manager, or dispatcher",
-  eyebrow: "AI booking and follow-up workflows",
+  eyebrow: "booking and follow-up workflows",
   headline: "Book more service calls and replacement estimates—even after hours.",
   subheadline:
     "Respond to missed calls and web leads, capture job-ready details, book within approved rules, and follow open estimates before the homeowner moves on.",
@@ -125,22 +125,22 @@ export const siteConfig = {
   complianceNote:
     "Automation handles approved intake, booking, routing, and follow-up. It does not diagnose HVAC equipment, give unsafe troubleshooting instructions, promise response time, quote variable repairs, or guarantee savings or booked revenue. Calling, recording, messaging, consent, privacy, opt-out, and local business requirements are confirmed during scope review.",
   consentCopy:
-    "By submitting, you agree that Elevate may contact you about this business request. Message and data rates may apply. Reply STOP to opt out of text messages. Do not submit customer information.",
+    "By submitting, you agree that Fox Valley Systems may contact you about this business request. Message and data rates may apply. Reply STOP to opt out of text messages. Do not submit customer information.",
   chatWelcome:
-    "Hi—I’m Elevate’s AI workflow advisor for HVAC companies. Tell me where calls, web leads, dispatch handoffs, or estimates leak, and I’ll help identify the fastest practical workflow to fix first.",
+    "Hi—I’m the Fox Valley workflow advisor for HVAC companies. Tell me where calls, web leads, dispatch handoffs, or estimates leak, and I’ll help identify the fastest practical workflow to fix first.",
   chatSuggestions: [
     "We miss too many after-hours calls",
     "Replacement estimates go cold",
     "Dispatch is overloaded",
   ],
-  metaTitle: "Elevate — AI Workflows for HVAC Companies",
+  metaTitle: "Fox Valley Systems — Workflows for HVAC Companies",
   metaDescription:
-    "Explore practical AI missed-call, web-lead, booking, dispatch, estimate follow-up, maintenance, and operations workflows for HVAC companies.",
+    "Explore practical missed-call, web-lead, booking, dispatch, estimate follow-up, maintenance, and operations workflows for HVAC companies.",
   theme: {
-    accent: "#2f8cff",
-    accentStrong: "#1268d8",
-    accentSoft: "rgba(47, 140, 255, 0.16)",
-    secondary: "#ff9f43",
+    accent: "#2563eb",
+    accentStrong: "#2563eb",
+    accentSoft: "rgba(37, 99, 235, 0.09)",
+    secondary: "#6b7280"
   },
 } as const;
 
@@ -168,7 +168,7 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     id: "ai-calling",
-    name: "24/7 HVAC AI Receptionist",
+    name: "24/7 Call Answering",
     setup: 4995,
     timeline: "2–3 weeks",
     summary: "Approved inbound or outbound call flows with team transfer and job-detail capture.",
@@ -235,7 +235,7 @@ export const workflows: WorkflowItem[] = [
   },
   {
     id: "hvac-ai-receptionist",
-    name: "24/7 HVAC AI Receptionist",
+    name: "24/7 Call Answering",
     description: "Answers approved calls, captures job details, books within defined rules, and transfers technical or uncertain conversations.",
     categories: ["Popular", "Book More Jobs", "AI Calling", "Scheduling & Dispatch"],
     icon: "headset",

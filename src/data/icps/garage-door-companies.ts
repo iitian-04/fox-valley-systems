@@ -67,7 +67,7 @@ export const siteConfig = {
   "audiencePlural": "garage door companies",
   "segment": "Residential garage-door repair and installation companies with local inbound demand",
   "persona": "Owner or dispatcher",
-  "eyebrow": "AI repair-booking workflows",
+  "eyebrow": "repair-booking workflows",
   "headline": "Turn urgent repair calls into booked visits—day, night, and weekend.",
   "subheadline": "Respond immediately, collect the essentials, and move qualified requests toward a visit without expanding the office team.",
   "mobileHeadline": "Recover the next urgent garage door lead.",
@@ -104,20 +104,20 @@ export const siteConfig = {
     "Start small, expand later"
   ],
   "complianceNote": "Automation does not diagnose a door, provide safety assurances, or give a firm price without an inspection. Technical, hazardous, trapped-person, unclear, and exception situations follow company-approved human escalation.",
-  "consentCopy": "By submitting, you agree that Elevate may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
-  "chatWelcome": "Hi—I’m Elevate’s AI workflow advisor for garage door companies. Tell me where repair calls, dispatch, or estimates get stuck, and I’ll help identify a practical first workflow.",
+  "consentCopy": "By submitting, you agree that Fox Valley Systems may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
+  "chatWelcome": "Hi—I’m the Fox Valley workflow advisor for garage door companies. Tell me where repair calls, dispatch, or estimates get stuck, and I’ll help identify a practical first workflow.",
   "chatSuggestions": [
     "We miss urgent repair calls",
     "Our estimates go quiet",
     "Dispatch is overloaded"
   ],
-  "metaTitle": "Elevate — AI Workflows for Garage Door Companies",
-  "metaDescription": "Explore AI repair lead response, intake, booking, estimate follow-up, dispatch, and garage door operations workflows.",
+  "metaTitle": "Fox Valley Systems — Workflows for Garage Door Companies",
+  "metaDescription": "Explore repair lead response, intake, booking, estimate follow-up, dispatch, and garage door operations workflows.",
   "theme": {
-    "accent": "#e8693d",
-    "accentStrong": "#ca4823",
-    "accentSoft": "rgba(232, 105, 61, 0.16)",
-    "secondary": "#6fd4ff"
+    "accent": "#2563eb",
+    "accentStrong": "#2563eb",
+    "accentSoft": "rgba(37, 99, 235, 0.09)",
+    "secondary": "#6b7280"
   },
   "buildNotes": [
     {
@@ -171,10 +171,10 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     "id": "ai-calling",
-    "name": "AI Call Coverage",
+    "name": "Call Coverage",
     "setup": 3995,
     "timeline": "5–10 business days",
-    "summary": "Approved inbound or outbound AI calling with structured intake and human handoff.",
+    "summary": "Approved inbound or outbound calling with structured intake and human handoff.",
     "usageNote": "Phone and AI-provider usage is separate"
   },
   {
@@ -272,7 +272,7 @@ export const workflows: WorkflowItem[] = [
   },
   {
     "id": "garage-door-ai-receptionist",
-    "name": "Garage Door AI Receptionist",
+    "name": "Garage Door Call Answering",
     "description": "Answers approved administrative questions, captures repair requests, and transfers safety, technical, or unusual cases.",
     "categories": [
       "Popular",

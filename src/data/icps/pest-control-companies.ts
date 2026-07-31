@@ -67,7 +67,7 @@ export const siteConfig = {
   "audiencePlural": "pest control companies",
   "segment": "Residential pest-control operators with recurring service plans",
   "persona": "Owner or general manager",
-  "eyebrow": "AI booking and renewal workflows",
+  "eyebrow": "booking and renewal workflows",
   "headline": "Turn seasonal lead spikes into first appointments—and more recurring customers.",
   "subheadline": "Respond quickly, book approved services, answer common questions, and keep renewals and win-backs moving with less customer-service work.",
   "mobileHeadline": "Turn peak-season inquiries into booked first service.",
@@ -104,20 +104,20 @@ export const siteConfig = {
     "Start small, expand later"
   ],
   "complianceNote": "Automation does not identify a pest with certainty, promise elimination, provide safety guarantees, or quote variable work outside approved rules. Technical, chemical, safety, health, and unusual questions go to trained staff.",
-  "consentCopy": "By submitting, you agree that Elevate may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
-  "chatWelcome": "Hi—I’m Elevate’s AI workflow advisor for pest control companies. Tell me where new leads, renewals, or customer communication get stuck, and I’ll help identify a practical first workflow.",
+  "consentCopy": "By submitting, you agree that Fox Valley Systems may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
+  "chatWelcome": "Hi—I’m the Fox Valley workflow advisor for pest control companies. Tell me where new leads, renewals, or customer communication get stuck, and I’ll help identify a practical first workflow.",
   "chatSuggestions": [
     "Peak-season calls overwhelm us",
     "Renewals are inconsistent",
     "Lapsed customers stay lapsed"
   ],
-  "metaTitle": "Elevate — AI Workflows for Pest Control Companies",
-  "metaDescription": "Explore AI lead response, initial-service booking, renewals, reactivation, customer communication, and pest operations workflows.",
+  "metaTitle": "Fox Valley Systems — Workflows for Pest Control Companies",
+  "metaDescription": "Explore lead response, initial-service booking, renewals, reactivation, customer communication, and pest operations workflows.",
   "theme": {
-    "accent": "#5cbf69",
-    "accentStrong": "#3b9848",
-    "accentSoft": "rgba(92, 191, 105, 0.16)",
-    "secondary": "#f0c35a"
+    "accent": "#2563eb",
+    "accentStrong": "#2563eb",
+    "accentSoft": "rgba(37, 99, 235, 0.09)",
+    "secondary": "#6b7280"
   },
   "buildNotes": [
     {
@@ -171,10 +171,10 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     "id": "ai-calling",
-    "name": "AI Call Coverage",
+    "name": "Call Coverage",
     "setup": 3995,
     "timeline": "5–10 business days",
-    "summary": "Approved inbound or outbound AI calling with structured intake and human handoff.",
+    "summary": "Approved inbound or outbound calling with structured intake and human handoff.",
     "usageNote": "Phone and AI-provider usage is separate"
   },
   {
@@ -272,7 +272,7 @@ export const workflows: WorkflowItem[] = [
   },
   {
     "id": "pest-control-ai-receptionist",
-    "name": "Pest Control AI Receptionist",
+    "name": "Pest Control Call Answering",
     "description": "Answers approved administrative questions, captures first-service requests, and transfers technical or safety exceptions.",
     "categories": [
       "Popular",

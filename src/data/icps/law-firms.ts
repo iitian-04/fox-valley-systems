@@ -22,7 +22,7 @@ export const siteConfig = {
   audiencePlural: "law firms",
   segment: "Independent law firms and growing multi-attorney practices",
   persona: "Managing partner, attorney-owner, firm administrator, or intake lead",
-  eyebrow: "AI workflows for law firms",
+  eyebrow: "workflows for law firms",
   headline: "Turn more qualified inquiries into clear, timely next steps.",
   subheadline:
     "Respond to new matters, capture approved intake details, route consultation requests, and keep client communication moving without asking attorneys to chase every handoff.",
@@ -97,24 +97,24 @@ export const siteConfig = {
     },
   ],
   complianceNote:
-    "Elevate supports approved administrative intake, consultation scheduling, document requests, status communication, and firm operations. It does not provide legal advice, create an attorney-client relationship, perform conflict checks without firm review, accept a matter, set legal strategy, predict outcomes, or replace professional judgment. Privacy, confidentiality, privilege, recording, messaging, consent, retention, security, jurisdiction, and professional-responsibility requirements are reviewed during scope; no legal or compliance guarantee is implied.",
+    "Fox Valley Systems supports approved administrative intake, consultation scheduling, document requests, status communication, and firm operations. It does not provide legal advice, create an attorney-client relationship, perform conflict checks without firm review, accept a matter, set legal strategy, predict outcomes, or replace professional judgment. Privacy, confidentiality, privilege, recording, messaging, consent, retention, security, jurisdiction, and professional-responsibility requirements are reviewed during scope; no legal or compliance guarantee is implied.",
   consentCopy:
-    "This form is for law-firm operations inquiries only—do not include client, matter, privileged, or confidential information. By submitting, you agree that Elevate may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
+    "This form is for law-firm operations inquiries only—do not include client, matter, privileged, or confidential information. By submitting, you agree that Fox Valley Systems may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
   chatWelcome:
-    "Hi—I’m Elevate’s AI workflow advisor for law firms. Tell me where new-matter response, consultation scheduling, intake, or client communication gets stuck, and I’ll help identify a practical first workflow.",
+    "Hi—I’m the Fox Valley workflow advisor for law firms. Tell me where new-matter response, consultation scheduling, intake, or client communication gets stuck, and I’ll help identify a practical first workflow.",
   chatSuggestions: [
     "New inquiries wait too long",
     "Intake arrives incomplete",
     "Scheduling takes too much back-and-forth",
   ],
-  metaTitle: "Elevate — AI Workflows for Law Firms",
+  metaTitle: "Fox Valley Systems — Workflows for Law Firms",
   metaDescription:
-    "Explore practical AI new-matter response, consultation scheduling, intake, client follow-up, and law-firm operations workflows.",
+    "Explore practical new-matter response, consultation scheduling, intake, client follow-up, and law-firm operations workflows.",
   theme: {
-    accent: "#315C88",
-    accentStrong: "#24486E",
-    accentSoft: "rgba(49, 92, 136, 0.16)",
-    secondary: "#C49A5A",
+    accent: "#2563eb",
+    accentStrong: "#2563eb",
+    accentSoft: "rgba(37, 99, 235, 0.09)",
+    secondary: "#6b7280"
   },
 } satisfies IcpBundleSource["siteConfig"];
 

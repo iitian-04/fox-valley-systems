@@ -1,32 +1,61 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, Instrument_Serif } from "next/font/google";
 import { getPublicSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const publicSiteUrl = getPublicSiteUrl();
 
+/**
+ * Two faces, each with one job.
+ *
+ * Inter carries every piece of interface text — labels, body copy, prices,
+ * form fields. Instrument Serif is used only for h1 and h2, which are all
+ * 20px or larger; it is a display face and falls apart at small sizes.
+ *
+ * Both are loaded through `next/font`, so they are self-hosted at build time
+ * and add no third-party request at runtime.
+ */
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sans",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-serif",
+});
+
+const TITLE = "Fox Valley Systems — Practical AI Workflows for Service Businesses";
+const DESCRIPTION =
+  "Fox Valley Systems builds one useful workflow at a time — call handling, lead capture, scheduling, and follow-up — around the tools your team already uses.";
+const SOCIAL_DESCRIPTION =
+  "Start with one workflow, see what it changes, and expand only when it earns the next step.";
+
 export const metadata: Metadata = {
   ...(publicSiteUrl ? { metadataBase: publicSiteUrl } : {}),
   title: {
-    default: "Elevate — AI Workflows for Service Businesses",
-    template: "%s | Elevate",
+    default: TITLE,
+    template: "%s | Fox Valley Systems",
   },
-  description:
-    "Practical AI calling, lead capture, scheduling, follow-up, and operations workflows built around the tools service businesses already use.",
-  applicationName: "Elevate",
+  description: DESCRIPTION,
+  applicationName: "Fox Valley Systems",
   keywords: [
-    "AI automation",
+    "workflow automation",
     "service businesses",
     "home service companies",
-    "workflow automation",
     "lead follow-up",
+    "scheduling automation",
     "operations automation",
   ],
   openGraph: {
     type: "website",
-    title: "Elevate — AI Workflows for Service Businesses",
-    description:
-      "Start with one practical workflow, prove its value, and expand when it earns the next step.",
-    siteName: "Elevate",
+    title: TITLE,
+    description: SOCIAL_DESCRIPTION,
+    siteName: "Fox Valley Systems",
     ...(publicSiteUrl
       ? {
           images: [
@@ -34,7 +63,7 @@ export const metadata: Metadata = {
               url: new URL("/og.png", publicSiteUrl),
               width: 1200,
               height: 630,
-              alt: "Elevate AI workflows for home service companies",
+              alt: "Fox Valley Systems — practical workflows for service businesses",
             },
           ],
         }
@@ -42,9 +71,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Elevate — AI Workflows for Service Businesses",
-    description:
-      "Start with one practical workflow, prove its value, and expand when it earns the next step.",
+    title: TITLE,
+    description: SOCIAL_DESCRIPTION,
     ...(publicSiteUrl
       ? { images: [new URL("/og.png", publicSiteUrl)] }
       : {}),
@@ -58,7 +86,7 @@ export const viewport: Viewport = {
   userScalable: false,
   viewportFit: "cover",
   interactiveWidget: "resizes-content",
-  themeColor: "#0a101b",
+  themeColor: "#0a0c0f",
 };
 
 export default function RootLayout({
@@ -67,7 +95,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${instrumentSerif.variable}`}>
       <body>{children}</body>
     </html>
   );

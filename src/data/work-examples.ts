@@ -6,6 +6,13 @@ export type WorkExample = {
   summary: string;
 };
 
+/*
+ * TODO(fox-valley): these demos are still served from the previous brand's
+ * domain and are embedded in an iframe on the landing page, so a visitor who
+ * opens the demo modal can see the old brand in the address bar and page
+ * chrome. Re-host them under a Fox Valley domain, or point these at new
+ * Fox Valley demos, before launch.
+ */
 const homeServicesExample: WorkExample = {
   name: "Nico’s Heating & Air",
   url: "https://hvac-b2b-demo.elevateagency.ai/?embed=1",
@@ -21,7 +28,7 @@ const dentalExample: WorkExample = {
 };
 
 const legalExample: WorkExample = {
-  name: "Elevate Legal",
+  name: "Harbor & Lane Law",
   url: "https://legal-b2b-demo.elevateagency.ai/?embed=1",
   summary:
     "Explore a live legal journey that makes consultation options, initial fees, scheduling, and intake easier to understand.",

@@ -65,7 +65,7 @@ export const siteConfig = {
   audiencePlural: "physical therapy clinics",
   segment: "Independent and multi-clinic physical therapy practices",
   persona: "Owner, clinic administrator, or operations director",
-  eyebrow: "AI referral-to-evaluation workflows",
+  eyebrow: "referral-to-evaluation workflows",
   headline: "Turn more referrals into completed evaluations—not unreturned calls.",
   subheadline:
     "Acknowledge referrals quickly, collect approved intake details, keep evaluation appointments moving, and show your team where prospective patients stall.",
@@ -124,22 +124,22 @@ export const siteConfig = {
   complianceNote:
     "These workflows support administrative referral access, scheduling, and communication only. They do not assess symptoms, determine clinical urgency, establish medical necessity, verify benefits as a guarantee, or recommend treatment. Patient information, privacy, security, consent, messaging, and system-access requirements are confirmed during scope review; no compliance guarantee is implied.",
   consentCopy:
-    "By submitting, you agree that Elevate may contact you about this business request. Message and data rates may apply. Reply STOP to opt out of text messages. Do not submit patient information.",
+    "By submitting, you agree that Fox Valley Systems may contact you about this business request. Message and data rates may apply. Reply STOP to opt out of text messages. Do not submit patient information.",
   chatWelcome:
-    "Hi—I’m Elevate’s AI workflow advisor for physical therapy clinics. Tell me where referrals or prospective patients stall before the first evaluation, and I’ll help identify a practical first workflow.",
+    "Hi—I’m the Fox Valley workflow advisor for physical therapy clinics. Tell me where referrals or prospective patients stall before the first evaluation, and I’ll help identify a practical first workflow.",
   chatSuggestions: [
     "Referrals wait too long",
     "Evaluation no-shows hurt capacity",
     "We lack referral-source visibility",
   ],
-  metaTitle: "Elevate — AI Workflows for Physical Therapy Clinics",
+  metaTitle: "Fox Valley Systems — Workflows for Physical Therapy Clinics",
   metaDescription:
-    "Explore practical AI referral follow-up, evaluation booking, intake, attendance, reactivation, and operations workflows for physical therapy clinics.",
+    "Explore practical referral follow-up, evaluation booking, intake, attendance, reactivation, and operations workflows for physical therapy clinics.",
   theme: {
-    accent: "#3478f6",
-    accentStrong: "#215bd0",
-    accentSoft: "rgba(52, 120, 246, 0.16)",
-    secondary: "#35c6b4",
+    accent: "#2563eb",
+    accentStrong: "#2563eb",
+    accentSoft: "rgba(37, 99, 235, 0.09)",
+    secondary: "#6b7280"
   },
 } as const;
 
@@ -167,7 +167,7 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     id: "ai-calling",
-    name: "PT AI Call Handler",
+    name: "Clinic Call Handler",
     setup: 5295,
     timeline: "2–3 weeks",
     summary: "Approved administrative call flows with staff escalation and outcome capture.",
@@ -296,7 +296,7 @@ export const workflows: WorkflowItem[] = [
   },
   {
     id: "pt-ai-call-handler",
-    name: "PT AI Call Handler",
+    name: "Clinic Call Handler",
     description: "Handles approved administrative questions and request capture, then transfers clinical, urgent, or uncertain conversations.",
     categories: ["Popular", "Referral Access", "Calls & Intake"],
     icon: "headset",

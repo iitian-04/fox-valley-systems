@@ -245,8 +245,8 @@ export async function POST(request: Request) {
     utmTerm: "automation workflow testing",
     utmPromo: "50",
     utmIcp: bundle.siteConfig.slug,
-    gclid: "TEST-GCLID-ELEVATE",
-    fbclid: "TEST-FBCLID-ELEVATE",
+    gclid: "TEST-GCLID-FOXVALLEY",
+    fbclid: "TEST-FBCLID-FOXVALLEY",
   };
   const legalConsent = {
     termsAccepted: true,
@@ -259,8 +259,8 @@ export async function POST(request: Request) {
     "TEST LEAD — DO NOT CONTACT",
     `Vertical: ${bundle.siteConfig.industry}`,
     "Contact: Webhook Test Lead",
-    "Organization: Elevate Webhook Test Co.",
-    "Website: https://example.com/elevate-webhook-test",
+    "Organization: Fox Valley Webhook Test Co.",
+    "Website: https://example.com/fox-valley-webhook-test",
     `${bundle.siteConfig.scaleLabel}: ${businessScale}`,
     `${bundle.siteConfig.softwareLabel}: ${currentSoftware}`,
     `Primary bottleneck: ${primaryBottleneck}`,
@@ -291,7 +291,7 @@ export async function POST(request: Request) {
   ].join("\n");
 
   const leadSubmitted = await sendLeadToWebhook({
-    source: "elevate-test",
+    source: "fox-valley-test",
     isTest: true,
     vertical: bundle.siteConfig.slug,
     icp: {
@@ -301,10 +301,10 @@ export async function POST(request: Request) {
     landingRoute: landingRouteFor(bundle),
     attribution,
     name: "Webhook Test Lead",
-    email: "elevate-webhook-test@example.com",
+    email: "fox-valley-webhook-test@example.com",
     phone: "+12025550147",
-    organization: "Elevate Webhook Test Co.",
-    businessWebsite: "https://example.com/elevate-webhook-test",
+    organization: "Fox Valley Webhook Test Co.",
+    businessWebsite: "https://example.com/fox-valley-webhook-test",
     businessScale,
     currentSoftware,
     primaryBottleneck,
@@ -331,7 +331,7 @@ export async function POST(request: Request) {
     {
       leadSubmitted: true,
       isTest: true,
-      source: "elevate-test",
+      source: "fox-valley-test",
       icp: bundle.siteConfig.slug,
       submittedAt,
     },

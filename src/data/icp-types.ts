@@ -47,6 +47,28 @@ export type ThemeConfig = {
   background: string;
 };
 
+/**
+ * Fox Valley Systems runs one palette across every route.
+ *
+ * The previous build gave each vertical its own hue, which meant seventeen
+ * different-looking products sharing one name. A single theme keeps the brand
+ * legible; verticals differentiate through copy, imagery, and workflows —
+ * not through color.
+ */
+export const foxValleyTheme: ThemeConfig = {
+  /** Electric blue accent. */
+  primary: "#2563eb",
+  /** Silver highlight. */
+  accent: "#6b7280",
+  accentStrong: "#1d4ed8",
+  accentSoft: "rgba(37, 99, 235, 0.09)",
+  secondary: "#6b7280",
+  /** Dark canvas, used only by routes that opt into themeMode="dark". */
+  dark: "#0a0c0f",
+  /** Default page surface. */
+  background: "#fafafa",
+};
+
 export type BuildNote = {
   title: string;
   detail: string;

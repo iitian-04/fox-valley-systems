@@ -67,7 +67,7 @@ export const siteConfig = {
   "audiencePlural": "landscaping and lawn care companies",
   "segment": "Residential landscaping and recurring lawn-care companies with crews and seasonal demand",
   "persona": "Owner or operations manager",
-  "eyebrow": "AI quote and route workflows",
+  "eyebrow": "quote and route workflows",
   "headline": "Turn more quote requests into booked estimates and recurring routes.",
   "subheadline": "Respond quickly, collect property and service details, follow up on open quotes, and reactivate seasonal clients with less office work.",
   "mobileHeadline": "Turn seasonal quote volume into scheduled next steps.",
@@ -104,20 +104,20 @@ export const siteConfig = {
     "Start small, expand later"
   ],
   "complianceNote": "Automation gathers approved scope, location, timing, and photos where appropriate; it does not give a final price for variable work, guarantee weather or service outcomes, or promise contract growth. Complex projects stay human-scoped.",
-  "consentCopy": "By submitting, you agree that Elevate may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
-  "chatWelcome": "Hi—I’m Elevate’s AI workflow advisor for landscaping and lawn care companies. Tell me where quote requests, estimates, routes, or seasonal follow-up stall, and I’ll help identify a practical first workflow.",
+  "consentCopy": "By submitting, you agree that Fox Valley Systems may contact you about this request. Message and data rates may apply. Reply STOP to opt out of text messages.",
+  "chatWelcome": "Hi—I’m the Fox Valley workflow advisor for landscaping and lawn care companies. Tell me where quote requests, estimates, routes, or seasonal follow-up stall, and I’ll help identify a practical first workflow.",
   "chatSuggestions": [
     "Quote requests pile up",
     "Open estimates go cold",
     "We need denser routes"
   ],
-  "metaTitle": "Elevate — AI Workflows for Landscaping & Lawn Care",
-  "metaDescription": "Explore AI quote response, property intake, estimate booking, seasonal reactivation, route, and landscaping operations workflows.",
+  "metaTitle": "Fox Valley Systems — Workflows for Landscaping & Lawn Care",
+  "metaDescription": "Explore quote response, property intake, estimate booking, seasonal reactivation, route, and landscaping operations workflows.",
   "theme": {
-    "accent": "#4db67d",
-    "accentStrong": "#2d9160",
-    "accentSoft": "rgba(77, 182, 125, 0.16)",
-    "secondary": "#d4c85a"
+    "accent": "#2563eb",
+    "accentStrong": "#2563eb",
+    "accentSoft": "rgba(37, 99, 235, 0.09)",
+    "secondary": "#6b7280"
   },
   "buildNotes": [
     {
@@ -171,10 +171,10 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     "id": "ai-calling",
-    "name": "AI Call Coverage",
+    "name": "Call Coverage",
     "setup": 3995,
     "timeline": "5–10 business days",
-    "summary": "Approved inbound or outbound AI calling with structured intake and human handoff.",
+    "summary": "Approved inbound or outbound calling with structured intake and human handoff.",
     "usageNote": "Phone and AI-provider usage is separate"
   },
   {
@@ -274,7 +274,7 @@ export const workflows: WorkflowItem[] = [
   },
   {
     "id": "landscaping-ai-receptionist",
-    "name": "Landscaping AI Receptionist",
+    "name": "Landscaping Call Answering",
     "description": "Answers approved administrative questions, captures quote requests, and hands complex project or pricing questions to staff.",
     "categories": [
       "Popular",

@@ -1,8 +1,14 @@
 export const LEGAL_EFFECTIVE_DATE = "July 28, 2026";
 export const LEGAL_VERSION = "2026-07-28";
 
-export const LEGAL_ENTITY = "ELEVATE AGENCY AI LLC";
-export const LEGAL_BRAND = "Elevate";
-export const LEGAL_EMAIL = "ethan@elevateagency.ai";
+/*
+ * TODO(fox-valley): replace the placeholders below with the registered entity
+ * name, its business address, and a monitored contact inbox before launch.
+ * The Terms and Privacy pages render these values verbatim, so shipping the
+ * placeholders would publish inaccurate legal notices.
+ */
+export const LEGAL_ENTITY = "FOX VALLEY SYSTEMS LLC";
+export const LEGAL_BRAND = "Fox Valley Systems";
+export const LEGAL_EMAIL = "legal@foxvalleysystems.example";
 export const LEGAL_ADDRESS =
-  "1309 Coffeen Avenue, Suite 1200, Sheridan, Wyoming 82801, United States";
+  "[Street address], [City], [State] [ZIP], United States";

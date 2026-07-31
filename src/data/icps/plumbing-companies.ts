@@ -66,7 +66,7 @@ export const siteConfig = {
   audiencePlural: "plumbing companies",
   segment: "Residential and light-commercial plumbing service companies",
   persona: "Owner, operations manager, service manager, or dispatcher",
-  eyebrow: "AI booking and dispatch workflows",
+  eyebrow: "booking and dispatch workflows",
   headline: "Answer urgent plumbing leads now—not tomorrow morning.",
   subheadline:
     "Capture the problem, location, timing, and contact details, then book approved calls or route a clean request to dispatch before the customer moves on.",
@@ -125,22 +125,22 @@ export const siteConfig = {
   complianceNote:
     "Automation supports approved intake, booking, routing, and follow-up only. It does not diagnose a plumbing problem, provide unsafe remediation instructions, promise emergency response, give a firm variable quote, or guarantee booked revenue. Calling, recording, messaging, consent, privacy, opt-out, and local business requirements are confirmed during scope review.",
   consentCopy:
-    "By submitting, you agree that Elevate may contact you about this business request. Message and data rates may apply. Reply STOP to opt out of text messages. Do not submit customer information.",
+    "By submitting, you agree that Fox Valley Systems may contact you about this business request. Message and data rates may apply. Reply STOP to opt out of text messages. Do not submit customer information.",
   chatWelcome:
-    "Hi—I’m Elevate’s AI workflow advisor for plumbing companies. Tell me where calls, web leads, dispatch handoffs, or estimates get stuck, and I’ll help identify the most useful first workflow.",
+    "Hi—I’m the Fox Valley workflow advisor for plumbing companies. Tell me where calls, web leads, dispatch handoffs, or estimates get stuck, and I’ll help identify the most useful first workflow.",
   chatSuggestions: [
     "After-hours calls go unanswered",
     "Dispatch needs cleaner intake",
     "Open estimates go cold",
   ],
-  metaTitle: "Elevate — AI Workflows for Plumbing Companies",
+  metaTitle: "Fox Valley Systems — Workflows for Plumbing Companies",
   metaDescription:
-    "Explore practical AI missed-call, urgent-intake, booking, dispatch, estimate follow-up, reactivation, and operations workflows for plumbing companies.",
+    "Explore practical missed-call, urgent-intake, booking, dispatch, estimate follow-up, reactivation, and operations workflows for plumbing companies.",
   theme: {
-    accent: "#1687d9",
-    accentStrong: "#0b65a8",
-    accentSoft: "rgba(22, 135, 217, 0.16)",
-    secondary: "#41c7a8",
+    accent: "#2563eb",
+    accentStrong: "#2563eb",
+    accentSoft: "rgba(37, 99, 235, 0.09)",
+    secondary: "#6b7280"
   },
 } as const;
 
@@ -168,7 +168,7 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     id: "ai-calling",
-    name: "24/7 Plumbing AI Receptionist",
+    name: "24/7 Call Answering",
     setup: 4995,
     timeline: "2–3 weeks",
     summary: "Approved call flows with structured intake, dispatch transfer, and fallback behavior.",
@@ -235,7 +235,7 @@ export const workflows: WorkflowItem[] = [
   },
   {
     id: "plumbing-ai-receptionist",
-    name: "24/7 Plumbing AI Receptionist",
+    name: "24/7 Call Answering",
     description: "Answers approved calls, captures dispatch-ready details, books within defined rules, and transfers uncertain conversations.",
     categories: ["Popular", "Book More Jobs", "AI Calling", "Scheduling & Dispatch"],
     icon: "headset",
